@@ -1433,7 +1433,11 @@ nav .logo, .hero-wordmark {
       background: linear-gradient(180deg, var(--kl-green-top) 0%, var(--kl-green) 100%);
     }
     .project-card-period { color: var(--kl-text); font-size: 14px; margin-top: 4px; }
-    .project-grid, .project-grid-2 { row-gap: 32px; }
+    .project-grid, .project-grid-2 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 14px; }
+    .card-poster-title { font-size: 16px; }
+    .card-score { font-size: 14px; }
+    .card-score-dot { width: 13px; height: 13px; }
+    .project-card-period { font-size: 12.5px; }
     @media (max-width: 768px) {
       .project-grid, .project-grid-2 { grid-template-columns: 1fr; row-gap: 28px; }
       .card-poster-title { font-size: 17px; }
