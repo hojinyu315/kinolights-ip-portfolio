@@ -1434,6 +1434,12 @@ nav .logo, .hero-wordmark {
     }
     .project-card-period { color: var(--kl-text); font-size: 14px; margin-top: 4px; }
     .project-grid, .project-grid-2 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 14px; }
+    /* 극장판 카드: 카드 크기는 유지, 이미지를 살짝 축소(원본 가로 약 74% → 85% 노출), 남는 위쪽은 배경색으로 페이드 */
+    .project-card-thumb.thumb-fit-movie3 {
+      position: absolute; bottom: 0; left: -9%; width: 118%; height: auto; object-fit: initial;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 16%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 16%);
+    }
     .card-poster-title { font-size: 16px; }
     .card-score { font-size: 14px; }
     .card-score-dot { width: 13px; height: 13px; }
@@ -1849,7 +1855,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         </div>
         <div class="project-card" onclick="openModal('modal-movie3')">
           <div class="card-thumb-wrap">
-            <img class="project-card-thumb" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-movie3.jpg" alt="극장판 3기" onerror="this.style.background='#f4f4f4'">
+            <img class="project-card-thumb thumb-fit-movie3" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-movie3.jpg" alt="극장판 3기" onerror="this.style.background='#f4f4f4'">
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
