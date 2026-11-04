@@ -1412,6 +1412,35 @@ nav .logo, .hero-wordmark {
     .project-card-period { color: var(--kl-sub); }
     .card-heart { color: var(--kl-dim); }
 
+    /* 프로젝트 카드: 키노라이츠 포스터 카드 (이미지 하단 페이드 + 제목 오버레이 + 평점 줄 + 정보 줄) */
+    .card-thumb-wrap { aspect-ratio: 8 / 7; background: var(--kl-bg); }
+    .card-thumb-wrap::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(25,25,25,0) 42%, rgba(25,25,25,0.72) 74%, #191919 100%);
+    }
+    .project-card-thumb, .project-card:hover .project-card-thumb { filter: none; }
+    .card-poster-title {
+      position: absolute; left: 18px; right: 18px; bottom: 16px; z-index: 2; pointer-events: none;
+      text-align: center; color: #FFFFFF; font-size: 21px; font-weight: 800; line-height: 1.32;
+      letter-spacing: -0.02em; word-break: keep-all; text-wrap: balance;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+    .project-card-body { justify-content: center; text-align: center; padding: 12px 8px 4px; }
+    .card-score {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--kl-green); font-size: 16px; font-weight: 700; line-height: 1.4;
+    }
+    .card-score-dot {
+      width: 15px; height: 15px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(180deg, var(--kl-green-top) 0%, var(--kl-green) 100%);
+    }
+    .project-card-period { color: var(--kl-text); font-size: 14px; margin-top: 4px; }
+    .project-grid, .project-grid-2 { row-gap: 32px; }
+    @media (max-width: 768px) {
+      .project-grid, .project-grid-2 { grid-template-columns: 1fr; row-gap: 28px; }
+      .card-poster-title { font-size: 19px; }
+    }
+
     /* 외부활동 */
     .activity-card, .sec-dark .activity-card {
       background: var(--kl-card); border: 1px solid var(--kl-line); border-radius: 8px;
@@ -1783,57 +1812,49 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="project-card" onclick="openModal('modal-thumbnail')">
           <div class="card-thumb-wrap">
             <img class="project-card-thumb" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-thumbnail.jpg" alt="썸네일 CTR" onerror="this.style.background='#f4f4f4'">
+            <div class="card-poster-title">유튜브 채널 성장 — 롱폼 썸네일 A/B</div>
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
-              <div class="project-card-title">유튜브 채널 성장 — 롱폼 썸네일 A/B</div>
-              <div class="project-card-period">2024.07 — 2025.02</div>
+              <div class="card-score"><span class="card-score-dot"></span>CTR 5.7 → 6.0%</div>
+              <div class="project-card-period">2024.07 — 2025.02 · 유튜브 · 롱폼 썸네일</div>
             </div>
-            <button class="card-heart" onclick="event.stopPropagation()">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
           </div>
         </div>
         <div class="project-card" onclick="openModal('modal-shorts')">
           <div class="card-thumb-wrap">
             <img class="project-card-thumb" src="https://hojinyu315.github.io/vyoova/images/thumb-shorts.jpg" alt="오리지널 쇼츠" onerror="this.style.background='#f4f4f4'">
+            <div class="card-poster-title">오리지널 쇼츠 기획·제작·운영</div>
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
-              <div class="project-card-title">오리지널 쇼츠 기획·제작·운영</div>
-              <div class="project-card-period">2025.07 — 2026.03</div>
+              <div class="card-score"><span class="card-score-dot"></span>평균 시청 지속률 69 → 72.8%</div>
+              <div class="project-card-period">2025.07 — 2026.03 · 유튜브·인스타그램 · 숏폼</div>
             </div>
-            <button class="card-heart" onclick="event.stopPropagation()">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
           </div>
         </div>
         <div class="project-card" onclick="openModal('modal-format')">
           <div class="card-thumb-wrap">
             <img class="project-card-thumb" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-format.jpg" alt="쇼츠 포맷" onerror="this.style.background='#f4f4f4'">
+            <div class="card-poster-title">밈·트렌드 재조립 포맷 · 생성 AI 제작 파이프라인</div>
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
-              <div class="project-card-title">밈·트렌드 재조립 포맷 · 생성 AI 제작 파이프라인</div>
-              <div class="project-card-period">2024.07 — 2025.12</div>
+              <div class="card-score"><span class="card-score-dot"></span>조회수 435만</div>
+              <div class="project-card-period">2024.07 — 2025.12 · 숏폼 · 밈/트렌드 · 생성 AI</div>
             </div>
-            <button class="card-heart" onclick="event.stopPropagation()">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
           </div>
         </div>
         <div class="project-card" onclick="openModal('modal-movie3')">
           <div class="card-thumb-wrap">
             <img class="project-card-thumb" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-movie3.jpg" alt="극장판 3기" onerror="this.style.background='#f4f4f4'">
+            <div class="card-poster-title">극장판 3기 예고편 기획·편집</div>
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
-              <div class="project-card-title">극장판 3기 예고편 기획·편집</div>
-              <div class="project-card-period">2025.08 — 2025.10</div>
+              <div class="card-score"><span class="card-score-dot"></span>예고편 평균 조회수 6.3만 → 12만</div>
+              <div class="project-card-period">2025.08 — 2025.10 · 극장판 · 예고편</div>
             </div>
-            <button class="card-heart" onclick="event.stopPropagation()">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
           </div>
         </div>
       </div>
@@ -1848,15 +1869,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="project-card" onclick="openModal('modal-cheritoon')">
           <div class="card-thumb-wrap">
             <img class="project-card-thumb" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-cheritoon.jpg" alt="체리툰" style="object-position:50% 30%;" onerror="this.style.background='#f4f4f4'">
+            <div class="card-poster-title">체리툰 오리지널 숏폼 기획·제작</div>
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
-              <div class="project-card-title">체리툰 오리지널 숏폼 기획·제작</div>
-              <div class="project-card-period">2025.09 — 2026.03</div>
+              <div class="card-score"><span class="card-score-dot"></span>300만+ 숏폼 6건</div>
+              <div class="project-card-period">2025.09 — 2026.03 · 숏폼 · 학원물/연애 · 챌린지</div>
             </div>
-            <button class="card-heart" onclick="event.stopPropagation()">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
           </div>
         </div>
       </div>
@@ -1871,15 +1890,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="project-card" onclick="openModal('modal-cjenm')">
           <div class="card-thumb-wrap">
             <img class="project-card-thumb" src="https://hojinyu315.github.io/vyoova/images/thumb-cjenm.jpg" alt="CJ ENM" onerror="this.style.background='#f4f4f4'">
+            <div class="card-poster-title">CJ ENM Tooniversus IP 콘텐츠 기획·운영</div>
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
-              <div class="project-card-title">CJ ENM Tooniversus IP 콘텐츠 기획·운영</div>
-              <div class="project-card-period">2021.05 — 2021.11</div>
+              <div class="card-score"><span class="card-score-dot"></span>기여도 100%</div>
+              <div class="project-card-period">2021.05 — 2021.11 · 투니버스 · 썸네일/SNS</div>
             </div>
-            <button class="card-heart" onclick="event.stopPropagation()">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
           </div>
         </div>
       </div>
@@ -1894,15 +1911,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="project-card" onclick="openModal('modal-crehoho')">
           <div class="card-thumb-wrap">
             <img class="project-card-thumb" src="https://hojinyu315.github.io/naverwebtoon/images/crehoho-collage.jpg" alt="Crehoho" style="object-position:50% 75%;" onerror="this.style.background='#f4f4f4'">
+            <div class="card-poster-title">Crehoho — 이미지 서사 창작 · 생성 툴 실험</div>
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
-              <div class="project-card-title">Crehoho — 이미지 서사 창작 · 생성 툴 실험</div>
-              <div class="project-card-period">2023.05 — 현재</div>
+              <div class="card-score"><span class="card-score-dot"></span>기여도 100%</div>
+              <div class="project-card-period">2023.05 — 현재 · 개인 채널 · 이미지 서사</div>
             </div>
-            <button class="card-heart" onclick="event.stopPropagation()">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
           </div>
         </div>
       </div>
@@ -1917,15 +1932,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="project-card" onclick="openModal('modal-diyclawd')">
           <div class="card-thumb-wrap">
             <img class="project-card-thumb" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-diyclawd.png" alt="DIY-Claude" onerror="this.style.background='#f4f4f4'">
+            <div class="card-poster-title">DIY-Claude<br>AI 작업 상태를 보여주는 데스크탑 캐릭터 앱</div>
           </div>
           <div class="project-card-body">
             <div class="card-body-text">
-              <div class="project-card-title">DIY-Claude<br>AI 작업 상태를 보여주는 데스크탑 캐릭터 앱</div>
-              <div class="project-card-period">2026</div>
+              <div class="card-score"><span class="card-score-dot"></span>기여도 100%</div>
+              <div class="project-card-period">2026 · 개인 프로젝트 · 데스크탑 앱</div>
             </div>
-            <button class="card-heart" onclick="event.stopPropagation()">
-              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            </button>
           </div>
         </div>
       </div>
