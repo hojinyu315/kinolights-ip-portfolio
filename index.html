@@ -1470,6 +1470,20 @@ nav .logo, .hero-wordmark {
     .kd-side-box { background: var(--kl-card); border: 1px solid var(--kl-line); border-radius: 8px; padding: 20px; }
     .kd-side-title { color: #FFFFFF; font-size: 16px; font-weight: 700; margin-bottom: 14px; }
     .kd-side-box .modal-list li { font-size: 13px; margin-bottom: 10px; }
+
+    /* 작업 정보: 항목명 / 내용 분리, 툴은 칩 */
+    .kd-side-box .modal-list li { padding-left: 0; margin-bottom: 14px; text-wrap: pretty; }
+    .kd-side-box .modal-list li::before { display: none; }
+    .kd-k { display: block; color: var(--kl-sub); font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+    .kd-v { display: block; color: var(--kl-text); font-size: 13.5px; line-height: 1.6; text-wrap: balance; word-break: keep-all; }
+    .kd-v strong { color: #FFFFFF; }
+    .kd-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .kd-tool {
+      display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+      color: var(--kl-text); font-size: 12.5px; padding: 4px 10px; border-radius: 999px;
+      box-shadow: inset 0 0 0 1px var(--kl-ring);
+    }
+    .kd-tool .skill { margin-left: 0; }
     .kd-main { min-width: 0; }
     .kd-sec { margin-bottom: 40px; }
     .kd-sec:last-child { margin-bottom: 8px; }
@@ -1883,7 +1897,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       <button class="kl-chip" type="button" data-filter="cheritoon">체리툰</button>
       <button class="kl-chip" type="button" data-filter="cjenm">CJ ENM</button>
       <button class="kl-chip" type="button" data-filter="crehoho">Crehoho</button>
-      <button class="kl-chip" type="button" data-filter="diy">DIY-Claude</button>
     </div>
 
     <!-- 브레드이발소 -->
@@ -2006,26 +2019,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       </div>
     </div>
 
-    <!-- DIY-Claude -->
-    <div class="project-group" data-group="diy">
-      <div class="project-releases-header">
-        <span class="project-releases-title">DIY-Claude · 개인 프로젝트 | 2026</span>
-      </div>
-      <div class="project-grid">
-        <div class="project-card" onclick="openModal('modal-diyclawd')">
-          <div class="card-thumb-wrap">
-            <img class="project-card-thumb" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-diyclawd.png" alt="DIY-Claude" onerror="this.style.background='#f4f4f4'">
-          </div>
-          <div class="project-card-body">
-            <div class="card-body-text">
-              <div class="card-poster-title">DIY-Claude — 데스크탑 캐릭터 앱</div>
-              <div class="card-score"><span class="card-score-dot"></span>기여도 100%</div>
-              <div class="project-card-period">2026 · 개인 프로젝트 · 데스크탑 앱</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
 </section>
@@ -2101,10 +2094,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="kd-side-box">
           <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-            <li><strong>기여도:</strong> 기획·제작·편집 전 과정 <strong>100%</strong> 직접 수행 (1인 제작)</li>
-            <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Higgsfield(나노바나나·Kling) · Gemini</li>
-            <li><strong>타겟:</strong> 1020세대</li>
-            <li><strong>목적:</strong> 캐릭터를 지키면서 새 장면을 트렌드 속도에 맞춰 제작</li>
+            <li><span class="kd-k">기여도</span><span class="kd-v">기획·제작·편집 전 과정 <strong>100%</strong> 직접 수행 (1인 제작)</span></li>
+            <li><span class="kd-k">사용 툴</span><span class="kd-tools"><span class="kd-tool">Photoshop <span class="skill skill-high">상</span></span><span class="kd-tool">Higgsfield(나노바나나·Kling)</span><span class="kd-tool">Gemini</span></span></li>
+            <li><span class="kd-k">타겟</span><span class="kd-v">1020세대</span></li>
+            <li><span class="kd-k">목적</span><span class="kd-v">캐릭터를 지키면서 새 장면을 트렌드 속도에 맞춰 제작</span></li>
           </ul>
         </div>
       </aside>
@@ -2196,10 +2189,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="kd-side-box">
           <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-            <li><strong>기여도:</strong> 런칭·메인 예고편 영상 편집 및 쇼츠 콘텐츠 제작 <strong>100%</strong> 직접 수행</li>
-            <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Gemini · Kling</li>
-            <li><strong>타겟:</strong> 1020세대 및 자녀를 둔 가족 단위 관객</li>
-            <li><strong>목적:</strong> 극장 개봉 인지도 확산 및 관람 유도</li>
+            <li><span class="kd-k">기여도</span><span class="kd-v">런칭·메인 예고편 영상 편집 및 쇼츠 콘텐츠 제작 <strong>100%</strong> 직접 수행</span></li>
+            <li><span class="kd-k">사용 툴</span><span class="kd-tools"><span class="kd-tool">Premiere Pro <span class="skill skill-high">상</span></span><span class="kd-tool">Gemini</span><span class="kd-tool">Kling</span></span></li>
+            <li><span class="kd-k">타겟</span><span class="kd-v">1020세대 및 자녀를 둔 가족 단위 관객</span></li>
+            <li><span class="kd-k">목적</span><span class="kd-v">극장 개봉 인지도 확산 및 관람 유도</span></li>
           </ul>
         </div>
       </aside>
@@ -2290,10 +2283,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="kd-side-box">
           <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-            <li><strong>기여도:</strong> 썸네일 기획 및 디자인 전 과정 <strong>100%</strong> 직접 수행 (1인 제작)</li>
-            <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · YouTube Studio <span class="skill skill-util">활용</span> · 나노바나나 · Gemini</li>
-            <li><strong>타겟:</strong> 1020세대</li>
-            <li><strong>목적:</strong> 클릭을 유도하고 그 결과를 데이터로 검증해 반복 개선</li>
+            <li><span class="kd-k">기여도</span><span class="kd-v">썸네일 기획 및 디자인 전 과정 <strong>100%</strong> 직접 수행 (1인 제작)</span></li>
+            <li><span class="kd-k">사용 툴</span><span class="kd-tools"><span class="kd-tool">Photoshop <span class="skill skill-high">상</span></span><span class="kd-tool">YouTube Studio <span class="skill skill-util">활용</span></span><span class="kd-tool">나노바나나</span><span class="kd-tool">Gemini</span></span></li>
+            <li><span class="kd-k">타겟</span><span class="kd-v">1020세대</span></li>
+            <li><span class="kd-k">목적</span><span class="kd-v">클릭을 유도하고 그 결과를 데이터로 검증해 반복 개선</span></li>
           </ul>
         </div>
       </aside>
@@ -2382,11 +2375,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="kd-side-box">
           <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-            <li><strong>기여도:</strong> 기획·구성과 제작 부서 협업·조율을 맡아 진행 — 전체 <strong>70%</strong> 기여</li>
-            <li><strong>협업 범위:</strong> 제작팀·아트팀·모델링팀 (브랜디드 건은 여기에 <strong>사업팀과 협업 브랜드</strong>가 추가)</li>
-            <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Photoshop <span class="skill skill-high">상</span></li>
-            <li><strong>타겟:</strong> 1020세대</li>
-            <li><strong>목적:</strong> 도달 → 채널 재방문 → 구독으로 잇는 유입 구조 설계</li>
+            <li><span class="kd-k">기여도</span><span class="kd-v">기획·구성과 제작 부서 협업·조율을 맡아 진행 — 전체 <strong>70%</strong> 기여</span></li>
+            <li><span class="kd-k">협업 범위</span><span class="kd-v">제작팀·아트팀·모델링팀 (브랜디드 건은 여기에 <strong>사업팀과 협업 브랜드</strong>가 추가)</span></li>
+            <li><span class="kd-k">사용 툴</span><span class="kd-tools"><span class="kd-tool">Premiere Pro <span class="skill skill-high">상</span></span><span class="kd-tool">Photoshop <span class="skill skill-high">상</span></span></span></li>
+            <li><span class="kd-k">타겟</span><span class="kd-v">1020세대</span></li>
+            <li><span class="kd-k">목적</span><span class="kd-v">도달 → 채널 재방문 → 구독으로 잇는 유입 구조 설계</span></li>
           </ul>
         </div>
       </aside>
@@ -2472,10 +2465,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="kd-side-box">
           <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-            <li><strong>기여도:</strong> 기획·구성과 제작 부서 협업·조율을 맡아 진행 — 전체 <strong>70%</strong> 기여</li>
-            <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Photoshop <span class="skill skill-high">상</span></li>
-            <li><strong>타겟:</strong> 1020세대</li>
-            <li><strong>목적:</strong> 도달을 유지하며 채널 재방문·팬 유입까지 잇는 숏폼 기획·제작</li>
+            <li><span class="kd-k">기여도</span><span class="kd-v">기획·구성과 제작 부서 협업·조율을 맡아 진행 — 전체 <strong>70%</strong> 기여</span></li>
+            <li><span class="kd-k">사용 툴</span><span class="kd-tools"><span class="kd-tool">Premiere Pro <span class="skill skill-high">상</span></span><span class="kd-tool">Photoshop <span class="skill skill-high">상</span></span></span></li>
+            <li><span class="kd-k">타겟</span><span class="kd-v">1020세대</span></li>
+            <li><span class="kd-k">목적</span><span class="kd-v">도달을 유지하며 채널 재방문·팬 유입까지 잇는 숏폼 기획·제작</span></li>
           </ul>
         </div>
       </aside>
@@ -2564,9 +2557,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="kd-side-box">
           <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-            <li><strong>기여도:</strong> 기획·이미지 합성·AI 활용·영상화 전 과정 <strong>100%</strong> 직접 수행</li>
-            <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Firefly · Gemini · Kling</li>
-            <li><strong>목적:</strong> 상업 IP 제약 없이 새 툴·기법과 "보는 사람을 몰입시키는 구조"를 자유롭게 실험</li>
+            <li><span class="kd-k">기여도</span><span class="kd-v">기획·이미지 합성·AI 활용·영상화 전 과정 <strong>100%</strong> 직접 수행</span></li>
+            <li><span class="kd-k">사용 툴</span><span class="kd-tools"><span class="kd-tool">Photoshop <span class="skill skill-high">상</span></span><span class="kd-tool">Firefly</span><span class="kd-tool">Gemini</span><span class="kd-tool">Kling</span></span></li>
+            <li><span class="kd-k">목적</span><span class="kd-v">상업 IP 제약 없이 새 툴·기법과 "보는 사람을 몰입시키는 구조"를 자유롭게 실험</span></li>
           </ul>
         </div>
       </aside>
@@ -2584,8 +2577,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="kd-sec">
           <div class="modal-section-title">Solution</div>
             <ul class="modal-list">
-            <li><strong>작업 방식:</strong> 감정과 상황을 "보이는 장면"으로 설계하고, 같은 장소·다른 시간대/감정, 한 장면에서 다음 장면으로 이어지는 연속 서사를 이미지로 기획·제작</li>
-            <li><strong>도구의 확장:</strong> 초기 콜라주·디지털 합성 → Gemini 오브젝트 생성·합성, Photoshop Firefly 생성 채우기로 의상·배경 확장 → Kling으로 영상화</li>
+            <li><span class="kd-k">작업 방식</span><span class="kd-v">감정과 상황을 "보이는 장면"으로 설계하고, 같은 장소·다른 시간대/감정, 한 장면에서 다음 장면으로 이어지는 연속 서사를 이미지로 기획·제작</span></li>
+            <li><span class="kd-k">도구의 확장</span><span class="kd-v">초기 콜라주·디지털 합성 → Gemini 오브젝트 생성·합성, Photoshop Firefly 생성 채우기로 의상·배경 확장 → Kling으로 영상화</span></li>
           </ul>
         </div>
         <div class="kd-sec kd-cards">
@@ -2634,10 +2627,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <div class="kd-side-box">
           <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-            <li><strong>기여도:</strong> 썸네일 및 SNS 콘텐츠 기획·제작 전 과정 <strong>100%</strong> 직접 수행</li>
-            <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Premiere Pro <span class="skill skill-high">상</span> · After Effects <span class="skill skill-mid">중</span></li>
-            <li><strong>타겟:</strong> 1020세대</li>
-            <li><strong>목적:</strong> 투니버스 유튜브 썸네일과 SNS 게시물 제작</li>
+            <li><span class="kd-k">기여도</span><span class="kd-v">썸네일 및 SNS 콘텐츠 기획·제작 전 과정 <strong>100%</strong> 직접 수행</span></li>
+            <li><span class="kd-k">사용 툴</span><span class="kd-tools"><span class="kd-tool">Photoshop <span class="skill skill-high">상</span></span><span class="kd-tool">Premiere Pro <span class="skill skill-high">상</span></span><span class="kd-tool">After Effects <span class="skill skill-mid">중</span></span></span></li>
+            <li><span class="kd-k">타겟</span><span class="kd-v">1020세대</span></li>
+            <li><span class="kd-k">목적</span><span class="kd-v">투니버스 유튜브 썸네일과 SNS 게시물 제작</span></li>
           </ul>
         </div>
       </aside>
@@ -2684,69 +2677,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             <li>개인 취향보다 대중이 공감할 수 있는 상황·감정을 시각화하는 일이 중요함을 체감</li>
             <li>콘텐츠는 적절한 타이밍과 포인트 설계, 반복 노출을 통해 성과로 이어진다는 인사이트 도출</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="modal-diyclawd" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-diyclawd')">
-  <div class="modal kl-detail">
-    <button class="modal-close" onclick="closeModal('modal-diyclawd')" aria-label="닫기">✕</button>
-    <div class="kd-hero">
-      <img class="kd-hero-img" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-diyclawd.png" alt="" style="object-position:50% 50%;">
-      <div class="kd-hero-text">
-        <div class="kd-title">DIY-Claude — 데스크탑 캐릭터 앱</div>
-        <div class="kd-sub">AI 작업 상태를 보여주는 데스크탑 캐릭터 앱</div>
-        <div class="kd-meta"><span class="kd-badge">DIY-Claude · 개인 프로젝트</span>2026 · 개인 프로젝트 · 데스크탑 앱</div>
-        <div class="kd-score"><span class="card-score-dot"></span>기여도 100%</div>
-      </div>
-    </div>
-    <div class="kd-body">
-      <aside class="kd-side">
-        <div class="kd-side-box">
-          <div class="kd-side-title">작업 정보</div>
-    <ul class="modal-list">
-            <li><strong>기여도:</strong> 기획·캐릭터 제작·개발 전 과정 <strong>100%</strong> 직접 수행</li>
-            <li><strong>사용 툴:</strong> Claude · Gemini</li>
-            <li><strong>목적:</strong> 일상에서도 AI 도구를 직접 파고들며, AI의 작업 흐름을 한눈에 보이게 만드는 실험 공간</li>
-          </ul>
-        </div>
-      </aside>
-      <div class="kd-main">
-        <div class="kd-sec">
-          <div class="modal-section-title">기본정보</div>
-          <p class="kd-summary">Claude Code의 작업 상태를 화면 위 캐릭터로 보여주는 macOS 데스크탑 도우미<br>공식 hook 기능과 macOS 네이티브 API(AppKit)만으로 직접 설계·제작한 개인 프로젝트</p>
-        </div>
-        <div class="kd-sec">
-          <div class="modal-section-title">Solution</div>
-            <ul class="modal-list">
-            <li><strong>구조 설계:</strong> hook 이벤트 → 상태 매핑(state.txt) → AppKit 캐릭터 애니메이션으로 이어지는 파이프라인을 직접 구현. idle/thinking/working/done/notify/sleeping 6가지 상태를 자체 제작 일러스트로 표시</li>
-            <li><strong>캐릭터 제작:</strong> Gemini로 직접 기획·생성(2단계 프롬프트 → 6포즈 시트)하고, Photoroom으로 투명 PNG 처리. Retina 대응 2배 해상도·premultiplied alpha로 작은 크기에서도 선명하게 제작</li>
-            <li><strong>운영:</strong> launchd(LaunchAgent)로 로그인 시 자동 실행·자동 복구, 투명 배경·항상 위 표시, 3분 무활동 시 자동 수면</li>
-          </ul>
-        </div>
-        <div class="kd-sec kd-cards">
-          <div class="modal-section-title">Lessons Learned</div>
-            <ul class="modal-list">
-            <li>포즈를 추상적인 "상태명"이 아니라 구체적인 동작으로 고정해야 결과가 안정적으로 나옴 — AI 이미지 작업에서 얻은 "빈칸을 줄일수록 재현 가능해진다"는 원칙이 그대로 적용</li>
-            <li>권한 결정을 앱 팝업과 동기화하려 했으나 한계를 확인하고, "결정은 Claude Code 화면에서, 앱은 알려주기만" 하는 단순한 구조로 되돌림</li>
-            <li>토큰 사용량 표시는 비교 기준값을 구할 방법이 없어, 틀린 추정치를 보여주기보다 기능 자체를 뺌 — 정확하지 않은 정보는 보여주지 않는 게 맞다고 판단</li>
-          </ul>
-        </div>
-        <div class="kd-sec kd-media">
-          <div class="modal-section-title">Contents</div>
-            <div class="modal-showcase">
-            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-idle.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-idle.png" alt="idle"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">idle · 대기</span></a>
-            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-thinking.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-thinking.png" alt="thinking"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">thinking · 생각 중</span></a>
-            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-working.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-working.png" alt="working"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">working · 작업 중</span></a>
-            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-done.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-done.png" alt="done"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">done · 완료</span></a>
-            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-notify.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-notify.png" alt="notify"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">notify · 알림</span></a>
-            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-sleeping.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-sleeping.png" alt="sleeping"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">sleeping · 수면</span></a>
-          </div>
-          <div style="margin-top: 16px;">
-            <a class="ext-link" href="https://github.com/hojinyu315/diy-clawd" target="_blank" style="font-size: 18px; font-weight: 600; color: var(--dark); letter-spacing: 0.3px;">→ 직접 만든 소스 코드 보기 github.com/hojinyu315/diy-clawd</a>
-          </div>
         </div>
       </div>
     </div>
