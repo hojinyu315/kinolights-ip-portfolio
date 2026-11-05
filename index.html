@@ -1434,6 +1434,85 @@ nav .logo, .hero-wordmark {
     }
     .project-card-period { color: var(--kl-text); font-size: 14px; margin-top: 4px; }
     .project-grid, .project-grid-2 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 14px; }
+
+    /* ── 상세 창: 키노라이츠 작품 상세 페이지 구성 ── */
+    .modal-overlay { background: rgba(0,0,0,0.82); padding: 40px 20px; }
+    .modal.kl-detail {
+      max-width: 1120px; padding: 20px; background: var(--kl-bg);
+      border: 1px solid var(--kl-line); border-radius: 12px;
+    }
+    .kl-detail .modal-close {
+      top: 32px; right: 32px; z-index: 5; width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(25,25,25,0.7); color: #FFFFFF; font-size: 15px; line-height: 36px; padding: 0; text-align: center;
+    }
+    .kd-hero {
+      position: relative; height: 420px; border-radius: 10px; overflow: hidden; background: var(--kl-bg);
+    }
+    .kd-hero-img {
+      position: absolute; top: 0; right: 0; width: 66%; height: 100%; object-fit: cover; display: block;
+    }
+    .kd-hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(90deg, #191919 34%, rgba(25,25,25,0.75) 46%, rgba(25,25,25,0) 68%),
+                  linear-gradient(0deg, rgba(25,25,25,0.35) 0%, rgba(25,25,25,0) 22%);
+    }
+    .kd-hero-text {
+      position: absolute; left: 40px; top: 50%; transform: translateY(-50%); z-index: 2; width: 40%;
+    }
+    .kd-title { color: #FFFFFF; font-size: 32px; font-weight: 800; line-height: 1.3; letter-spacing: -0.03em; word-break: keep-all; text-wrap: balance; }
+    .kd-sub { color: var(--kl-text); font-size: 15px; line-height: 1.5; margin-top: 10px; word-break: keep-all; }
+    .kd-meta { color: var(--kl-text); font-size: 14px; margin-top: 18px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .kd-badge { background: var(--kl-blue); color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+    .kd-score { display: flex; align-items: center; gap: 6px; color: var(--kl-green); font-size: 15px; font-weight: 700; margin-top: 8px; }
+
+    .kd-body { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 32px; margin-top: 28px; align-items: start; }
+    .kd-side { position: sticky; top: 0; }
+    .kd-side-box { background: var(--kl-card); border: 1px solid var(--kl-line); border-radius: 8px; padding: 20px; }
+    .kd-side-title { color: #FFFFFF; font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+    .kd-side-box .modal-list li { font-size: 13px; margin-bottom: 10px; }
+    .kd-main { min-width: 0; }
+    .kd-sec { margin-bottom: 40px; }
+    .kd-sec:last-child { margin-bottom: 8px; }
+    .kl-detail .modal-section-title {
+      color: #FFFFFF; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; text-transform: none;
+      margin: 0 0 14px;
+    }
+    .kd-summary { color: var(--kl-body); font-size: 14px; line-height: 1.8; }
+
+    /* Performance: 리뷰 & 평점 박스처럼 */
+    .kd-perf .modal-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .kd-perf .modal-list li {
+      background: var(--kl-card); border: 1px solid var(--kl-line); border-radius: 8px;
+      padding: 16px 16px 16px 38px; margin: 0; font-size: 13.5px;
+    }
+    .kd-perf .modal-list li::before {
+      content: ''; top: 22px; left: 16px; width: 12px; height: 12px; border-radius: 50%;
+      background: linear-gradient(180deg, var(--kl-green-top) 0%, var(--kl-green) 100%);
+    }
+    .kd-perf .modal-list li strong { color: var(--kl-green); }
+
+    /* Failure·Lessons: 리뷰 카드처럼 */
+    .kd-cards .modal-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .kd-cards .modal-list li {
+      background: var(--kl-card); border: 1px solid var(--kl-line); border-radius: 8px;
+      padding: 16px 18px; margin: 0; font-size: 13.5px;
+    }
+    .kd-cards .modal-list li::before { display: none; }
+    .kd-cards .modal-list li:only-child { grid-column: 1 / -1; }
+
+    @media (max-width: 900px) {
+      .modal-overlay { padding: 0; }
+      .modal.kl-detail { padding: 12px; border-radius: 0; border: 0; min-height: 100%; }
+      .kl-detail .modal-close { top: 22px; right: 22px; }
+      .kd-hero { height: auto; }
+      .kd-hero-img { position: relative; width: 100%; height: 240px; }
+      .kd-hero::after { background: linear-gradient(0deg, #191919 0%, rgba(25,25,25,0) 45%); height: 240px; }
+      .kd-hero-text { position: relative; left: 0; top: 0; transform: none; width: auto; padding: 4px 8px 0; }
+      .kd-title { font-size: 24px; }
+      .kd-body { grid-template-columns: 1fr; gap: 24px; margin-top: 24px; }
+      .kd-side { position: static; }
+      .kd-perf .modal-list, .kd-cards .modal-list { grid-template-columns: 1fr; }
+    }
     /* 극장판 카드: 로고가 잘 보이도록 하단 페이드 없음 */
     .card-thumb-wrap.no-fade::before { display: none; }
     .card-poster-title { font-size: 16px; }
@@ -2006,447 +2085,670 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <!-- ── MODALS ── -->
 
 <div id="modal-format" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-format')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-format')">✕</button>
-    <div class="modal-tag">브레드이발소</div>
-    <div class="modal-title">밈·트렌드 재조립 포맷<br>— 소재 회의부터 생성 AI 장면까지</div>
-    <div class="modal-period">2024.07 – 2025.12</div>
-    <div class="modal-summary">주간 소재 회의로 음악·밈·이슈를 모으고, 캐릭터에 맞게 재조립한 숏폼<br>원작에 없는 장면은 생성 AI로 빠르게 제작</div>
-    <div class="modal-section-title">Contents</div>
-    <div class="modal-showcase">
-      <a class="modal-showcase-item" href="https://www.instagram.com/reel/DFFISwEv5pl/" target="_blank"><img src="bbang-gihun-thumb.png" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.instagram.com/reel/DJlhVdpvVAf/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/reel4_치즈그리는대로.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.instagram.com/reel/DJYpe5lvxfP/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/reel6_진격의빵스타.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.instagram.com/reel/DRjUqWUE8Js/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/빵정민.png" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.instagram.com/reel/DSZaloqE53V/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/빵강록.png" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.instagram.com/reel/DThhrkEEhde/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/쇼미더머랭.png" alt=""><div class="play-btn"><span>▶</span></div></a>
+  <div class="modal kl-detail">
+    <button class="modal-close" onclick="closeModal('modal-format')" aria-label="닫기">✕</button>
+    <div class="kd-hero">
+      <img class="kd-hero-img" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-format.jpg" alt="" style="object-position:50% 40%;">
+      <div class="kd-hero-text">
+        <div class="kd-title">밈·트렌드 재조립 포맷 · 생성 AI</div>
+        <div class="kd-sub">소재 회의부터 생성 AI 장면까지</div>
+        <div class="kd-meta"><span class="kd-badge">브레드이발소</span>2024.07 — 2025.12 · 숏폼 · 밈/트렌드 · 생성 AI</div>
+        <div class="kd-score"><span class="card-score-dot"></span>조회수 435만</div>
+      </div>
     </div>
-    <div class="modal-section-title">Process</div>
-    <p class="modal-process-note">흑백요리사 패러디 '흑백이발사 2'용 — 원본 캐릭터에 Gemini로 셰프복을 입히고, 같은 캐릭터를 주방 장면으로 확장한 뒤 릴스로 편집</p>
-    <div class="modal-showcase" style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 200px 160px;">
-      <a class="modal-showcase-item" style="grid-column:1; grid-row:1; aspect-ratio:unset; height:200px;" href="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20원본.jpg" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20원본.jpg" alt="원본 캐릭터" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">원본</span></a>
-      <a class="modal-showcase-item" style="grid-column:2; grid-row:1; aspect-ratio:unset; height:200px;" href="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20의상%20수정.jpeg" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20의상%20수정.jpeg" alt="AI 의상 생성" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">Gemini 수정</span></a>
-      <a class="modal-showcase-item" style="grid-column:1/3; grid-row:2; aspect-ratio:unset; height:160px;" href="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20이미지.jpeg" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20이미지.jpeg" alt="AI 씬 생성" style="width:100%; height:100%; object-fit:cover; object-position:center 65%; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">Gemini 수정</span></a>
-      <a class="modal-showcase-item" style="grid-column:3; grid-row:1/3; aspect-ratio:unset; height:364px; display:block;" href="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20릴스2.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20릴스2.png" alt="최종 릴스" style="width:100%; height:100%; object-fit:cover; object-position:center 32%; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">최종 영상</span></a>
+    <div class="kd-body">
+      <aside class="kd-side">
+        <div class="kd-side-box">
+          <div class="kd-side-title">작업 정보</div>
+    <ul class="modal-list">
+            <li><strong>기여도:</strong> 기획·제작·편집 전 과정 <strong>100%</strong> 직접 수행 (1인 제작)</li>
+            <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Higgsfield(나노바나나·Kling) · Gemini</li>
+            <li><strong>타겟:</strong> 1020세대</li>
+            <li><strong>목적:</strong> 캐릭터를 지키면서 새 장면을 트렌드 속도에 맞춰 제작</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="kd-main">
+        <div class="kd-sec">
+          <div class="modal-section-title">기본정보</div>
+          <p class="kd-summary">주간 소재 회의로 음악·밈·이슈를 모으고, 캐릭터에 맞게 재조립한 숏폼<br>원작에 없는 장면은 생성 AI로 빠르게 제작</p>
+        </div>
+        <div class="kd-sec kd-media">
+          <div class="modal-section-title">Contents</div>
+            <div class="modal-showcase">
+            <a class="modal-showcase-item" href="https://www.instagram.com/reel/DFFISwEv5pl/" target="_blank"><img src="bbang-gihun-thumb.png" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.instagram.com/reel/DJlhVdpvVAf/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/reel4_치즈그리는대로.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.instagram.com/reel/DJYpe5lvxfP/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/reel6_진격의빵스타.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.instagram.com/reel/DRjUqWUE8Js/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/빵정민.png" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.instagram.com/reel/DSZaloqE53V/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/빵강록.png" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.instagram.com/reel/DThhrkEEhde/" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/쇼미더머랭.png" alt=""><div class="play-btn"><span>▶</span></div></a>
+          </div>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Process</div>
+            <p class="modal-process-note">흑백요리사 패러디 '흑백이발사 2'용 — 원본 캐릭터에 Gemini로 셰프복을 입히고, 같은 캐릭터를 주방 장면으로 확장한 뒤 릴스로 편집</p>
+          <div class="modal-showcase" style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 200px 160px;">
+            <a class="modal-showcase-item" style="grid-column:1; grid-row:1; aspect-ratio:unset; height:200px;" href="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20원본.jpg" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20원본.jpg" alt="원본 캐릭터" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">원본</span></a>
+            <a class="modal-showcase-item" style="grid-column:2; grid-row:1; aspect-ratio:unset; height:200px;" href="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20의상%20수정.jpeg" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20의상%20수정.jpeg" alt="AI 의상 생성" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">Gemini 수정</span></a>
+            <a class="modal-showcase-item" style="grid-column:1/3; grid-row:2; aspect-ratio:unset; height:160px;" href="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20이미지.jpeg" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20이미지.jpeg" alt="AI 씬 생성" style="width:100%; height:100%; object-fit:cover; object-position:center 65%; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">Gemini 수정</span></a>
+            <a class="modal-showcase-item" style="grid-column:3; grid-row:1/3; aspect-ratio:unset; height:364px; display:block;" href="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20릴스2.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마카롱%20릴스2.png" alt="최종 릴스" style="width:100%; height:100%; object-fit:cover; object-position:center 32%; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">최종 영상</span></a>
+          </div>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Problem</div>
+            <ul class="modal-list">
+            <li>기존 편집 숏폼은 6~7년 전 에피소드 장면을 단순히 잘라 올리는 방식 — 최신 트렌드와 거리가 생기며 몰입도 저하</li>
+            <li>에피소드 내 장면만으로는 트렌드를 반영한 새 컨셉 구현 불가 — 콘텐츠 형식 자체를 바꿔야 하는 상황</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Solution</div>
+            <ul class="modal-list">
+            <li><strong>소재 선정:</strong> 음악·밈·이슈로 후보를 올리고, 8명이 참여하는 주간 회의에서 다른 채널 레퍼런스와 함께 화제성과 <strong>제작 가능성</strong>을 판단</li>
+            <li><strong>캐릭터에 맞는 재구성:</strong> 화제작·밈을 그대로 따라 하지 않고, 기존 에피소드 장면을 캐릭터 성격에 맞게 재조립</li>
+            <li><strong>왜 생성 AI였나:</strong> 3D로 새 장면을 만들면 모델링만 3주, 발행까지 한 달. 트렌드는 1~2주면 지나감 → 바로 결과물이 나오는 생성 AI</li>
+            <li><strong>캐릭터 일관성 확보:</strong> 나노바나나를 메인으로, 같은 레퍼런스를 Gemini에도 넣어 원본에 가까운 쪽을 선택.<br>외부 IP 패러디는 <strong>패러디 컨셉 레퍼런스를 먼저 만들어 모든 생성에 함께 입력</strong><br>→ 우리 캐릭터와 패러디 대상이 동시에 읽히게. 완성 이미지는 Kling으로 영상화</li>
+            <li><strong>영상 툴 선택:</strong> Higgsfield 안에서 나노바나나로 이미지를, Kling으로 영상을 생성 — 완성 이미지를 그대로 살려 움직이게 하려면 image-to-video와 시작·끝 프레임 제어가 필요해 Kling으로 정착</li>
+            <li><strong>템플릿화 → 팀 자산:</strong> 레퍼런스를 역할별(캐릭터·배경·표정·헤어·라이팅)로 나누고 충돌 시 우선순위 명시 → 팀이 같은 기준으로 제작하고 <strong>간단한 후보정으로 마무리</strong>할 수 있도록 정리</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-perf">
+          <div class="modal-section-title">Performance</div>
+            <ul class="modal-list">
+            <li><strong>기준점:</strong> 밈 편집 숏폼은 업로드 4~5일 기준 <strong>30만</strong>이 평균선</li>
+            <li>기존 에피소드 장면을 트렌드에 맞게 재조립한 '래퍼 타노스' 패러디 릴스 — <strong>조회수 435만·좋아요 15만</strong></li>
+            <li>생성 AI 장면을 넣은 '치즈가 그리는대로!' 이탈리안 브레인롯 밈 패러디 — <strong>조회수 274만·좋아요 11.9만</strong></li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Failure → Retry</div>
+            <ul class="modal-list">
+            <li>첫 AI 샘플은 <strong>동작·표정이 어색하고 비율·눈코입이 흐트러져</strong> 제작팀 우려 → 후보정 샘플로 재검증, AI 적용 범위를 함께 정한 뒤 상시 운영</li>
+            <li>프롬프트 즉흥 수정·후보정 의존으로 같은 오류 반복 → 역할별 레퍼런스·우선순위 템플릿으로 교체</li>
+            <li>Kling은 입력이 비면 임의로 채움<br>옆모습 한 장만 주자 <strong>반대편 팔이 없는 영상</strong> → 동작을 구간으로 나누고 시작·끝 프레임을 명시</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Lessons Learned</div>
+            <ul class="modal-list">
+            <li>기존 자산의 한계는 콘텐츠가 아니라 '제작 방식'의 한계였다는 점 — 소재를 새로 만들자 트렌드 반영이 가능해짐</li>
+            <li>새 제작 방식은 개인 노하우로 두지 않고 팀이 반복할 수 있는 템플릿으로 남길 때 비로소 '변화'가 된다는 인사이트 확보</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="modal-section-title">Why</div>
-    <ul class="modal-list">
-      <li><strong>기여도:</strong> 기획·제작·편집 전 과정 <strong>100%</strong> 직접 수행 (1인 제작)</li>
-      <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Higgsfield(나노바나나·Kling) · Gemini</li>
-      <li><strong>타겟:</strong> 1020세대</li>
-      <li><strong>목적:</strong> 캐릭터를 지키면서 새 장면을 트렌드 속도에 맞춰 제작</li>
-    </ul>
-    <div class="modal-section-title">Problem</div>
-    <ul class="modal-list">
-      <li>기존 편집 숏폼은 6~7년 전 에피소드 장면을 단순히 잘라 올리는 방식 — 최신 트렌드와 거리가 생기며 몰입도 저하</li>
-      <li>에피소드 내 장면만으로는 트렌드를 반영한 새 컨셉 구현 불가 — 콘텐츠 형식 자체를 바꿔야 하는 상황</li>
-    </ul>
-    <div class="modal-section-title">Solution</div>
-    <ul class="modal-list">
-      <li><strong>소재 선정:</strong> 음악·밈·이슈로 후보를 올리고, 8명이 참여하는 주간 회의에서 다른 채널 레퍼런스와 함께 화제성과 <strong>제작 가능성</strong>을 판단</li>
-      <li><strong>캐릭터에 맞는 재구성:</strong> 화제작·밈을 그대로 따라 하지 않고, 기존 에피소드 장면을 캐릭터 성격에 맞게 재조립</li>
-      <li><strong>왜 생성 AI였나:</strong> 3D로 새 장면을 만들면 모델링만 3주, 발행까지 한 달. 트렌드는 1~2주면 지나감 → 바로 결과물이 나오는 생성 AI</li>
-      <li><strong>캐릭터 일관성 확보:</strong> 나노바나나를 메인으로, 같은 레퍼런스를 Gemini에도 넣어 원본에 가까운 쪽을 선택.<br>외부 IP 패러디는 <strong>패러디 컨셉 레퍼런스를 먼저 만들어 모든 생성에 함께 입력</strong><br>→ 우리 캐릭터와 패러디 대상이 동시에 읽히게. 완성 이미지는 Kling으로 영상화</li>
-      <li><strong>영상 툴 선택:</strong> Higgsfield 안에서 나노바나나로 이미지를, Kling으로 영상을 생성 — 완성 이미지를 그대로 살려 움직이게 하려면 image-to-video와 시작·끝 프레임 제어가 필요해 Kling으로 정착</li>
-      <li><strong>템플릿화 → 팀 자산:</strong> 레퍼런스를 역할별(캐릭터·배경·표정·헤어·라이팅)로 나누고 충돌 시 우선순위 명시 → 팀이 같은 기준으로 제작하고 <strong>간단한 후보정으로 마무리</strong>할 수 있도록 정리</li>
-    </ul>
-    <div class="modal-section-title">Performance</div>
-    <ul class="modal-list">
-      <li><strong>기준점:</strong> 밈 편집 숏폼은 업로드 4~5일 기준 <strong>30만</strong>이 평균선</li>
-      <li>기존 에피소드 장면을 트렌드에 맞게 재조립한 '래퍼 타노스' 패러디 릴스 — <strong>조회수 435만·좋아요 15만</strong></li>
-      <li>생성 AI 장면을 넣은 '치즈가 그리는대로!' 이탈리안 브레인롯 밈 패러디 — <strong>조회수 274만·좋아요 11.9만</strong></li>
-    </ul>
-    <div class="modal-section-title">Failure → Retry</div>
-    <ul class="modal-list">
-      <li>첫 AI 샘플은 <strong>동작·표정이 어색하고 비율·눈코입이 흐트러져</strong> 제작팀 우려 → 후보정 샘플로 재검증, AI 적용 범위를 함께 정한 뒤 상시 운영</li>
-      <li>프롬프트 즉흥 수정·후보정 의존으로 같은 오류 반복 → 역할별 레퍼런스·우선순위 템플릿으로 교체</li>
-      <li>Kling은 입력이 비면 임의로 채움<br>옆모습 한 장만 주자 <strong>반대편 팔이 없는 영상</strong> → 동작을 구간으로 나누고 시작·끝 프레임을 명시</li>
-    </ul>
-    <div class="modal-section-title">Lessons Learned</div>
-    <ul class="modal-list">
-      <li>기존 자산의 한계는 콘텐츠가 아니라 '제작 방식'의 한계였다는 점 — 소재를 새로 만들자 트렌드 반영이 가능해짐</li>
-      <li>새 제작 방식은 개인 노하우로 두지 않고 팀이 반복할 수 있는 템플릿으로 남길 때 비로소 '변화'가 된다는 인사이트 확보</li>
-    </ul>
   </div>
 </div>
 
 <div id="modal-movie3" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-movie3')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-movie3')">✕</button>
-    <div class="modal-tag">브레드이발소</div>
-    <div class="modal-title">극장판 3기 예고편(런칭·티저·메인) 기획·편집</div>
-    <div class="modal-period">2025.08 – 2025.10</div>
-    <div class="modal-summary">브레드이발소 극장판 3기 개봉에 맞춰 런칭·티저·메인 예고편을 포함한 홍보 영상 전반을 기획·제작<br>본편에 없는 홍보 장면은 생성 AI로 만들어 예고편에 삽입</div>
-    <div class="modal-section-title">Contents</div>
-    <div class="modal-showcase">
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=1zZ4XBKH3no" target="_blank"><img src="https://img.youtube.com/vi/1zZ4XBKH3no/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=NySU7ShwpXc" target="_blank"><img src="https://img.youtube.com/vi/NySU7ShwpXc/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=PK4xQXbXkpI" target="_blank"><img src="https://img.youtube.com/vi/PK4xQXbXkpI/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=WdUixeb165s" target="_blank"><img src="https://img.youtube.com/vi/WdUixeb165s/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=QhIEiNeHA3A&t=13s" target="_blank"><img src="https://img.youtube.com/vi/QhIEiNeHA3A/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=zf281ivYPIQ" target="_blank"><img src="https://img.youtube.com/vi/zf281ivYPIQ/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+  <div class="modal kl-detail">
+    <button class="modal-close" onclick="closeModal('modal-movie3')" aria-label="닫기">✕</button>
+    <div class="kd-hero">
+      <img class="kd-hero-img" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-movie3.jpg" alt="" style="object-position:50% 100%;">
+      <div class="kd-hero-text">
+        <div class="kd-title">극장판 3기 예고편 기획·편집</div>
+        <div class="kd-meta"><span class="kd-badge">브레드이발소</span>2025.08 — 2025.10 · 극장판 · 예고편</div>
+        <div class="kd-score"><span class="card-score-dot"></span>예고편 평균 조회수 6.3만 → 12만</div>
+      </div>
     </div>
-    <div class="modal-section-title">Process</div>
-    <p class="modal-process-note">4주차 이벤트 영상용 — 본편 장면 속 빨간 가방을 4주차 선물(에코백)로 교체. 캐릭터·굿즈·손에 든 모습 레퍼런스 3장과 "포즈·표정·배경은 그대로" 조건을 Gemini에 넣어 수정한 뒤, Kling으로 영상화해 이벤트 영상에 삽입</p>
-    <div class="modal-showcase" style="grid-template-columns: repeat(2, 1fr);">
-      <a class="modal-showcase-item" href="https://hojinyu315.github.io/naverwebtoon/images/초코%20원본.jpeg" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/초코%20원본.jpeg" alt="원본" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">원본</span></a>
-      <a class="modal-showcase-item" href="https://hojinyu315.github.io/naverwebtoon/images/초코%20제미나이.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/초코%20제미나이.png" alt="Gemini 수정" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">Gemini 수정</span></a>
-      <a class="modal-showcase-item" href="https://hojinyu315.github.io/naverwebtoon/images/초코%20영상화.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/초코%20영상화.png" alt="Kling 영상화" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">Kling 영상화</span></a>
-      <a class="modal-showcase-item" href="https://hojinyu315.github.io/naverwebtoon/images/초코%20릴스.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/초코%20릴스.png" alt="최종 영상" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">최종 영상</span></a>
+    <div class="kd-body">
+      <aside class="kd-side">
+        <div class="kd-side-box">
+          <div class="kd-side-title">작업 정보</div>
+    <ul class="modal-list">
+            <li><strong>기여도:</strong> 런칭·메인 예고편 영상 편집 및 쇼츠 콘텐츠 제작 <strong>100%</strong> 직접 수행</li>
+            <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Gemini · Kling</li>
+            <li><strong>타겟:</strong> 1020세대 및 자녀를 둔 가족 단위 관객</li>
+            <li><strong>목적:</strong> 극장 개봉 인지도 확산 및 관람 유도</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="kd-main">
+        <div class="kd-sec">
+          <div class="modal-section-title">기본정보</div>
+          <p class="kd-summary">브레드이발소 극장판 3기 개봉에 맞춰 런칭·티저·메인 예고편을 포함한 홍보 영상 전반을 기획·제작<br>본편에 없는 홍보 장면은 생성 AI로 만들어 예고편에 삽입</p>
+        </div>
+        <div class="kd-sec kd-media">
+          <div class="modal-section-title">Contents</div>
+            <div class="modal-showcase">
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=1zZ4XBKH3no" target="_blank"><img src="https://img.youtube.com/vi/1zZ4XBKH3no/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=NySU7ShwpXc" target="_blank"><img src="https://img.youtube.com/vi/NySU7ShwpXc/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=PK4xQXbXkpI" target="_blank"><img src="https://img.youtube.com/vi/PK4xQXbXkpI/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=WdUixeb165s" target="_blank"><img src="https://img.youtube.com/vi/WdUixeb165s/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=QhIEiNeHA3A&t=13s" target="_blank"><img src="https://img.youtube.com/vi/QhIEiNeHA3A/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=zf281ivYPIQ" target="_blank"><img src="https://img.youtube.com/vi/zf281ivYPIQ/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+          </div>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Process</div>
+            <p class="modal-process-note">4주차 이벤트 영상용 — 본편 장면 속 빨간 가방을 4주차 선물(에코백)로 교체. 캐릭터·굿즈·손에 든 모습 레퍼런스 3장과 "포즈·표정·배경은 그대로" 조건을 Gemini에 넣어 수정한 뒤, Kling으로 영상화해 이벤트 영상에 삽입</p>
+          <div class="modal-showcase" style="grid-template-columns: repeat(2, 1fr);">
+            <a class="modal-showcase-item" href="https://hojinyu315.github.io/naverwebtoon/images/초코%20원본.jpeg" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/초코%20원본.jpeg" alt="원본" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">원본</span></a>
+            <a class="modal-showcase-item" href="https://hojinyu315.github.io/naverwebtoon/images/초코%20제미나이.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/초코%20제미나이.png" alt="Gemini 수정" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">Gemini 수정</span></a>
+            <a class="modal-showcase-item" href="https://hojinyu315.github.io/naverwebtoon/images/초코%20영상화.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/초코%20영상화.png" alt="Kling 영상화" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">Kling 영상화</span></a>
+            <a class="modal-showcase-item" href="https://hojinyu315.github.io/naverwebtoon/images/초코%20릴스.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/초코%20릴스.png" alt="최종 영상" style="width:100%; height:100%; object-fit:cover; display:block;"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">최종 영상</span></a>
+          </div>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Problem</div>
+            <ul class="modal-list">
+            <li>기존 극장판 대비 더 높은 관객 유입이 필요했으나 팬층 외 신규 관객을 끌어들일 흥미 요소가 부족</li>
+            <li>굿즈·이벤트 정보 전달이 단발성에 그쳐 관람 전 기대감을 지속적으로 형성할 콘텐츠가 부족</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Solution</div>
+            <ul class="modal-list">
+            <li><strong>스토리 기반 예고편:</strong> 3기는 10분 에피소드 6개 옴니버스지만 <strong>'7대 죄악' 악당들 vs 브레드이발소</strong> 컨셉이 확실 → 예고편은 악당 컨셉을 하나의 대결 구도로 이어 장편처럼 구성해 기대감 확보</li>
+            <li><strong>3단 예고 구성:</strong> 2기부터 이어온 런칭·티저·메인 구조를 유지하되 각 편이 악당 컨셉의 다른 단계를 보여주도록 메시지 분배</li>
+            <li><strong>편집 포인트 설계:</strong> 예고편의 핵심 흥미 요소를 앞단에 배치하고, 굿즈·이벤트 정보는 회차로 나눠 관람 동기를 반복 강화</li>
+            <li><strong>신규 장면 제작:</strong> 에피소드에 없는 홍보 장면은 생성 AI로 새로 만들어 삽입 — 캐릭터 정체성 유지</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-perf">
+          <div class="modal-section-title">Performance</div>
+            <ul class="modal-list">
+            <li><strong>기준점:</strong> 2기 예고편 평균 조회수 <strong>6.3만</strong> → 3기 예고편 평균 <strong>12만</strong> (약 2배)</li>
+            <li>최종 관객 수 <strong>282,263명</strong> — 전작(2기 259,388명) 대비 <strong>8.8% 증가 (+22,875명)</strong></li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Roles & Responsibilities</div>
+            <ul class="modal-list">
+            <li>극장판 홍보용 숏폼 콘텐츠 및 썸네일 제작</li>
+            <li>예고편 핵심 흥미 요소 분석해 편집 포인트와 메시지 구조 설계</li>
+            <li>주차별 홍보 영상용 캐릭터 굿즈 장면을 새로 제작해 재구성</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Lessons Learned</div>
+            <ul class="modal-list">
+            <li>관객의 흥미를 유도하는 지점을 중심으로 구성하고 영상의 흐름을 유지하는 편집 구조의 중요성을 이해</li>
+            <li>옴니버스라도 컨셉이 확실하면 예고편은 하나의 이야기로 묶을 수 있고, 그쪽이 에피소드 나열보다 기대감을 만든다는 점을 확인</li>
+            <li>새 장면이 필요할 땐 원작 캐릭터의 정체성 유지를 최우선으로 둬야 홍보물 전체의 일관성이 지켜진다는 인사이트 도출</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="modal-section-title">Why</div>
-    <ul class="modal-list">
-      <li><strong>기여도:</strong> 런칭·메인 예고편 영상 편집 및 쇼츠 콘텐츠 제작 <strong>100%</strong> 직접 수행</li>
-      <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Gemini · Kling</li>
-      <li><strong>타겟:</strong> 1020세대 및 자녀를 둔 가족 단위 관객</li>
-      <li><strong>목적:</strong> 극장 개봉 인지도 확산 및 관람 유도</li>
-    </ul>
-    <div class="modal-section-title">Problem</div>
-    <ul class="modal-list">
-      <li>기존 극장판 대비 더 높은 관객 유입이 필요했으나 팬층 외 신규 관객을 끌어들일 흥미 요소가 부족</li>
-      <li>굿즈·이벤트 정보 전달이 단발성에 그쳐 관람 전 기대감을 지속적으로 형성할 콘텐츠가 부족</li>
-    </ul>
-    <div class="modal-section-title">Solution</div>
-    <ul class="modal-list">
-      <li><strong>스토리 기반 예고편:</strong> 3기는 10분 에피소드 6개 옴니버스지만 <strong>'7대 죄악' 악당들 vs 브레드이발소</strong> 컨셉이 확실 → 예고편은 악당 컨셉을 하나의 대결 구도로 이어 장편처럼 구성해 기대감 확보</li>
-      <li><strong>3단 예고 구성:</strong> 2기부터 이어온 런칭·티저·메인 구조를 유지하되 각 편이 악당 컨셉의 다른 단계를 보여주도록 메시지 분배</li>
-      <li><strong>편집 포인트 설계:</strong> 예고편의 핵심 흥미 요소를 앞단에 배치하고, 굿즈·이벤트 정보는 회차로 나눠 관람 동기를 반복 강화</li>
-      <li><strong>신규 장면 제작:</strong> 에피소드에 없는 홍보 장면은 생성 AI로 새로 만들어 삽입 — 캐릭터 정체성 유지</li>
-    </ul>
-    <div class="modal-section-title">Performance</div>
-    <ul class="modal-list">
-      <li><strong>기준점:</strong> 2기 예고편 평균 조회수 <strong>6.3만</strong> → 3기 예고편 평균 <strong>12만</strong> (약 2배)</li>
-      <li>최종 관객 수 <strong>282,263명</strong> — 전작(2기 259,388명) 대비 <strong>8.8% 증가 (+22,875명)</strong></li>
-    </ul>
-    <div class="modal-section-title">Roles & Responsibilities</div>
-    <ul class="modal-list">
-      <li>극장판 홍보용 숏폼 콘텐츠 및 썸네일 제작</li>
-      <li>예고편 핵심 흥미 요소 분석해 편집 포인트와 메시지 구조 설계</li>
-      <li>주차별 홍보 영상용 캐릭터 굿즈 장면을 새로 제작해 재구성</li>
-    </ul>
-    <div class="modal-section-title">Lessons Learned</div>
-    <ul class="modal-list">
-      <li>관객의 흥미를 유도하는 지점을 중심으로 구성하고 영상의 흐름을 유지하는 편집 구조의 중요성을 이해</li>
-      <li>옴니버스라도 컨셉이 확실하면 예고편은 하나의 이야기로 묶을 수 있고, 그쪽이 에피소드 나열보다 기대감을 만든다는 점을 확인</li>
-      <li>새 장면이 필요할 땐 원작 캐릭터의 정체성 유지를 최우선으로 둬야 홍보물 전체의 일관성이 지켜진다는 인사이트 도출</li>
-    </ul>
   </div>
 </div>
 
 <div id="modal-thumbnail" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-thumbnail')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-thumbnail')">✕</button>
-    <div class="modal-tag">브레드이발소</div>
-    <div class="modal-title">유튜브 채널 성장 — 롱폼 썸네일 A/B<br>— 롱폼 평균 조회수 3배 이상, 채널 CTR 5.7% → 6.0%</div>
-    <div class="modal-period">2024.07 – 2025.02</div>
-    <div class="modal-summary">브레드이발소의 세계관과 트렌드를 시각적으로 재해석하여 유튜브 클릭률을 높이는 썸네일을 기획·제작</div>
-    <div class="modal-section-title">Contents</div>
-    <div class="modal-showcase">
-      <a class="modal-showcase-item" href="https://youtu.be/E2lOltKIzb0" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/고죠_브레드.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://youtu.be/Hj5g5E3pvL8" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마법4.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=yp67xqbS0ZI&t=2s" target="_blank"><img src="https://img.youtube.com/vi/yp67xqbS0ZI/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://youtu.be/4RtP7dSKPw0" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/수능1.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://youtu.be/_EQGgJIEh2o" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/붕어빵3.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://youtu.be/QczJPAoTt3Q" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/승부욕2.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+  <div class="modal kl-detail">
+    <button class="modal-close" onclick="closeModal('modal-thumbnail')" aria-label="닫기">✕</button>
+    <div class="kd-hero">
+      <img class="kd-hero-img" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-thumbnail.jpg" alt="" style="object-position:50% 40%;">
+      <div class="kd-hero-text">
+        <div class="kd-title">유튜브 채널 성장 — 롱폼 썸네일 A/B</div>
+        <div class="kd-sub">롱폼 평균 조회수 3배 이상, 채널 CTR 5.7% → 6.0%</div>
+        <div class="kd-meta"><span class="kd-badge">브레드이발소</span>2024.07 — 2025.02 · 유튜브 · 롱폼 썸네일</div>
+        <div class="kd-score"><span class="card-score-dot"></span>CTR 5.7 → 6.0%</div>
+      </div>
     </div>
-    <div class="modal-section-title">Why</div>
+    <div class="kd-body">
+      <aside class="kd-side">
+        <div class="kd-side-box">
+          <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-      <li><strong>기여도:</strong> 썸네일 기획 및 디자인 전 과정 <strong>100%</strong> 직접 수행 (1인 제작)</li>
-      <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · YouTube Studio <span class="skill skill-util">활용</span> · 나노바나나 · Gemini</li>
-      <li><strong>타겟:</strong> 1020세대</li>
-      <li><strong>목적:</strong> 클릭을 유도하고 그 결과를 데이터로 검증해 반복 개선</li>
-    </ul>
-    <div class="modal-section-title">Problem</div>
-    <ul class="modal-list">
-      <li>기존 썸네일은 <strong>본편 장면을 그대로 캡처해 제목만 얹는 형식</strong>이 반복됐고, 소재도 <strong>에피소드 안 장면으로 제한</strong>돼 시즌 이슈·트렌드·감정을 담을 수 없었음 — 클릭을 유도할 요소가 없는 구조</li>
-      <li>노출은 유지됐지만 CTR·조회수·구독자로 이어지지 않았고, <strong>성과를 분석하는 과정 자체가 없어</strong> 잘 나와도 이유를 몰랐음</li>
-    </ul>
-    <div class="modal-section-title">Solution</div>
-    <ul class="modal-list">
-      <li><strong>시안 → 사내 투표 → A/B:</strong> 시안은 기존 캡처 1개 + 트렌드 1개(2안), 또는 트렌드 2개를 각각 녹인 3안으로 준비.<br>사내 투표로 추린 뒤 YouTube Studio A/B 테스트에 올려 <strong>시안별 CTR·시청 시간</strong>으로 확정</li>
-      <li><strong>컨셉 전환:</strong> 단순 장면 캡처 → 반전 중심 + 시즌 이슈·트렌드 반영으로 시의성과 클릭 요소를 동시에 강화</li>
-      <li><strong>AI 제작:</strong> 캡처로 만들 수 없는 트렌드·감정 이미지는 나노바나나 레퍼런스 생성 → Gemini 비교 → Photoshop 보정으로 제작</li>
-      <li><strong>검증·최적화:</strong> A/B로 시안별 CTR을 비교해 클릭 유도 구성을 반복 개선</li>
-      <li><strong>자산화:</strong> A/B 테스트·CTR 분석을 도입하고 통한 구성을 <strong>인수인계 문서</strong>로 남김 → 이후 제작자들이 같은 원칙으로 작업</li>
-    </ul>
-    <div class="modal-section-title">Performance</div>
-    <ul class="modal-list">
-      <li>개선 전 롱폼 조회수 1~2만 대 → 평균 <strong>3배 이상</strong></li>
-      <li>노출을 통한 클릭 약 <strong>51만 건</strong> 증가 (YouTube Studio에서 기간 설정해 직접 산출)</li>
-      <li>입사 전/후 4개월 비교 기준 CTR <strong>5.7% → 6.0%</strong> 상승</li>
-      <li>수익 <strong>$8,500 이상</strong> 증가 (월말 정산 확인)</li>
-      <li>구독자 증가율 약 <strong>12%</strong> 향상</li>
-    </ul>
-    <div class="modal-section-title">Roles & Responsibilities</div>
-    <ul class="modal-list">
-      <li>이벤트·트렌드 이슈 기반 썸네일 기획 — 캐릭터 중심 구조 → 클릭 유도형으로 전환</li>
-      <li>YouTube Studio A/B 테스트를 활용해 썸네일별 CTR 및 시청 시간 성과 비교·검증</li>
-      <li>콘텐츠 업로드 일정 수립 및 운영 총괄</li>
-    </ul>
-    <div class="modal-section-title">Failure → Retry</div>
-    <ul class="modal-list">
-      <li><strong>내가 더 잘 만들었다고 판단한 시안과 대중의 선택이 달랐음.</strong> 흑백요리사 유행 때 메인 포스터 패러디 시안과 다른 밈 시안을 함께 올렸는데, 상징성이 큰 포스터가 이길 거라 봤지만 투표·A/B 모두 다른 밈이 높음 → 이후 시안은 "내가 보기에 잘 된 것"이 아니라 <strong>"지금 사람들이 돌려 보는 것"</strong>에서 출발</li>
-    </ul>
-    <div class="modal-section-title">Lessons Learned</div>
-    <ul class="modal-list">
-      <li>썸네일은 단순한 시각 요소가 아니라 사용자의 클릭을 유도하는 '상황 설계'라는 점을 학습</li>
-      <li>개인적인 흥미보다 대중이 공감할 수 있는 보편적 상황과 감정을 반영할 때 CTR과 반응이 더 높아진다는 인사이트 확인</li>
-    </ul>
+            <li><strong>기여도:</strong> 썸네일 기획 및 디자인 전 과정 <strong>100%</strong> 직접 수행 (1인 제작)</li>
+            <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · YouTube Studio <span class="skill skill-util">활용</span> · 나노바나나 · Gemini</li>
+            <li><strong>타겟:</strong> 1020세대</li>
+            <li><strong>목적:</strong> 클릭을 유도하고 그 결과를 데이터로 검증해 반복 개선</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="kd-main">
+        <div class="kd-sec">
+          <div class="modal-section-title">기본정보</div>
+          <p class="kd-summary">브레드이발소의 세계관과 트렌드를 시각적으로 재해석하여 유튜브 클릭률을 높이는 썸네일을 기획·제작</p>
+        </div>
+        <div class="kd-sec kd-media">
+          <div class="modal-section-title">Contents</div>
+            <div class="modal-showcase">
+            <a class="modal-showcase-item" href="https://youtu.be/E2lOltKIzb0" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/고죠_브레드.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://youtu.be/Hj5g5E3pvL8" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/마법4.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=yp67xqbS0ZI&t=2s" target="_blank"><img src="https://img.youtube.com/vi/yp67xqbS0ZI/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://youtu.be/4RtP7dSKPw0" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/수능1.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://youtu.be/_EQGgJIEh2o" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/붕어빵3.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://youtu.be/QczJPAoTt3Q" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/승부욕2.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+          </div>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Problem</div>
+            <ul class="modal-list">
+            <li>기존 썸네일은 <strong>본편 장면을 그대로 캡처해 제목만 얹는 형식</strong>이 반복됐고, 소재도 <strong>에피소드 안 장면으로 제한</strong>돼 시즌 이슈·트렌드·감정을 담을 수 없었음 — 클릭을 유도할 요소가 없는 구조</li>
+            <li>노출은 유지됐지만 CTR·조회수·구독자로 이어지지 않았고, <strong>성과를 분석하는 과정 자체가 없어</strong> 잘 나와도 이유를 몰랐음</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Solution</div>
+            <ul class="modal-list">
+            <li><strong>시안 → 사내 투표 → A/B:</strong> 시안은 기존 캡처 1개 + 트렌드 1개(2안), 또는 트렌드 2개를 각각 녹인 3안으로 준비.<br>사내 투표로 추린 뒤 YouTube Studio A/B 테스트에 올려 <strong>시안별 CTR·시청 시간</strong>으로 확정</li>
+            <li><strong>컨셉 전환:</strong> 단순 장면 캡처 → 반전 중심 + 시즌 이슈·트렌드 반영으로 시의성과 클릭 요소를 동시에 강화</li>
+            <li><strong>AI 제작:</strong> 캡처로 만들 수 없는 트렌드·감정 이미지는 나노바나나 레퍼런스 생성 → Gemini 비교 → Photoshop 보정으로 제작</li>
+            <li><strong>검증·최적화:</strong> A/B로 시안별 CTR을 비교해 클릭 유도 구성을 반복 개선</li>
+            <li><strong>자산화:</strong> A/B 테스트·CTR 분석을 도입하고 통한 구성을 <strong>인수인계 문서</strong>로 남김 → 이후 제작자들이 같은 원칙으로 작업</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-perf">
+          <div class="modal-section-title">Performance</div>
+            <ul class="modal-list">
+            <li>개선 전 롱폼 조회수 1~2만 대 → 평균 <strong>3배 이상</strong></li>
+            <li>노출을 통한 클릭 약 <strong>51만 건</strong> 증가 (YouTube Studio에서 기간 설정해 직접 산출)</li>
+            <li>입사 전/후 4개월 비교 기준 CTR <strong>5.7% → 6.0%</strong> 상승</li>
+            <li>수익 <strong>$8,500 이상</strong> 증가 (월말 정산 확인)</li>
+            <li>구독자 증가율 약 <strong>12%</strong> 향상</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Roles & Responsibilities</div>
+            <ul class="modal-list">
+            <li>이벤트·트렌드 이슈 기반 썸네일 기획 — 캐릭터 중심 구조 → 클릭 유도형으로 전환</li>
+            <li>YouTube Studio A/B 테스트를 활용해 썸네일별 CTR 및 시청 시간 성과 비교·검증</li>
+            <li>콘텐츠 업로드 일정 수립 및 운영 총괄</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Failure → Retry</div>
+            <ul class="modal-list">
+            <li><strong>내가 더 잘 만들었다고 판단한 시안과 대중의 선택이 달랐음.</strong> 흑백요리사 유행 때 메인 포스터 패러디 시안과 다른 밈 시안을 함께 올렸는데, 상징성이 큰 포스터가 이길 거라 봤지만 투표·A/B 모두 다른 밈이 높음 → 이후 시안은 "내가 보기에 잘 된 것"이 아니라 <strong>"지금 사람들이 돌려 보는 것"</strong>에서 출발</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Lessons Learned</div>
+            <ul class="modal-list">
+            <li>썸네일은 단순한 시각 요소가 아니라 사용자의 클릭을 유도하는 '상황 설계'라는 점을 학습</li>
+            <li>개인적인 흥미보다 대중이 공감할 수 있는 보편적 상황과 감정을 반영할 때 CTR과 반응이 더 높아진다는 인사이트 확인</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div id="modal-shorts" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-shorts')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-shorts')">✕</button>
-    <div class="modal-tag">브레드이발소</div>
-    <div class="modal-title">브레드이발소 오리지널 쇼츠 기획·제작·운영</div>
-    <div class="modal-period">2025.07 – 2026.03</div>
-    <div class="modal-summary">유튜브·인스타 두 채널에 주 4편, 8개월간 100편 이상 기획·제작·운영<br>같은 제작 프로세스 위에서 <strong>브랜디드 콘텐츠</strong>도 함께 진행</div>
-    <div class="modal-section-title">Contents</div>
-    <div class="modal-showcase">
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/Y3GrSc4yins" target="_blank"><img src="https://img.youtube.com/vi/Y3GrSc4yins/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/bsrmfz9NMqI" target="_blank"><img src="https://img.youtube.com/vi/bsrmfz9NMqI/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/yywAVG4YBnM" target="_blank"><img src="https://img.youtube.com/vi/yywAVG4YBnM/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/uDnjn-SSNNo" target="_blank"><img src="https://img.youtube.com/vi/uDnjn-SSNNo/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/pXPPpYAoa6A" target="_blank"><img src="https://img.youtube.com/vi/pXPPpYAoa6A/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/aMOR3xQszik" target="_blank"><img src="https://img.youtube.com/vi/aMOR3xQszik/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+  <div class="modal kl-detail">
+    <button class="modal-close" onclick="closeModal('modal-shorts')" aria-label="닫기">✕</button>
+    <div class="kd-hero">
+      <img class="kd-hero-img" src="https://hojinyu315.github.io/vyoova/images/thumb-shorts.jpg" alt="" style="object-position:50% 35%;">
+      <div class="kd-hero-text">
+        <div class="kd-title">오리지널 쇼츠 기획·제작·운영</div>
+        <div class="kd-meta"><span class="kd-badge">브레드이발소</span>2025.07 — 2026.03 · 유튜브·인스타그램 · 숏폼</div>
+        <div class="kd-score"><span class="card-score-dot"></span>평균 시청 지속률 69 → 72.8%</div>
+      </div>
     </div>
-    <div class="modal-section-title">Why</div>
+    <div class="kd-body">
+      <aside class="kd-side">
+        <div class="kd-side-box">
+          <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-      <li><strong>기여도:</strong> 기획·구성과 제작 부서 협업·조율을 맡아 진행 — 전체 <strong>70%</strong> 기여</li>
-      <li><strong>협업 범위:</strong> 제작팀·아트팀·모델링팀 (브랜디드 건은 여기에 <strong>사업팀과 협업 브랜드</strong>가 추가)</li>
-      <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Photoshop <span class="skill skill-high">상</span></li>
-      <li><strong>타겟:</strong> 1020세대</li>
-      <li><strong>목적:</strong> 도달 → 채널 재방문 → 구독으로 잇는 유입 구조 설계</li>
-    </ul>
-    <div class="modal-section-title">Problem</div>
-    <ul class="modal-list">
-      <li>극장판 홍보 시기와 맞물려 채널 콘텐츠가 홍보 중심으로 편중되며 기존 팬 대상 콘텐츠의 재미와 몰입도가 저하</li>
-      <li>오리지널 쇼츠로서의 재미를 유지하면서도 홍보 메시지를 자연스럽게 녹여야 하는 이중 과제 발생</li>
-    </ul>
-    <div class="modal-section-title">Solution</div>
-    <ul class="modal-list">
-      <li>극장판 홍보 흐름을 유지하면서도 개별 콘텐츠 자체의 재미와 완결성을 갖춘 오리지널 쇼츠 기획</li>
-      <li>캐릭터 성격 기반 상황극 포맷을 활용해 콘텐츠 소비 → 채널 재방문 → 구독으로 이어지는 유입 구조 설계</li>
-      <li><strong>캐릭터 배역 설계:</strong> 상황극마다 배역을 팀이 공유하는 캐릭터상에 맞춰 배치 — 브레드는 해결사, 윌크는 어리숙한 역, 초코는 이성적·단호한 역 → 같은 캐릭터가 콘텐츠마다 다르게 읽히지 않도록</li>
-      <li><strong>브랜디드 확장:</strong> 롯데칠성 등 브랜디드 숏폼은 같은 제작 라인에 사업팀·광고주가 더해지는 구조. 광고주 수정 요청을 내부 확인 후 회신하고 일정 재조율</li>
-      <li><strong>판단 경계 고정:</strong> 작업량이 안 바뀌는 수정(동작·효과음 시점)은 직접 조율, 일정·비용이 바뀌는 수정(캐릭터 추가·배경 모델링)은 보고 후 전달 — 경계를 미리 정해 조율 속도 확보</li>
-      <li><strong>반응 반영:</strong> 댓글과 지표를 확인해 다음 썸네일·릴스 구성에 반영</li>
-    </ul>
-    <div class="modal-section-title">Performance</div>
-    <ul class="modal-list">
-      <li><strong>기준점:</strong> 오리지널 쇼츠는 업로드 4~5일 기준 <strong>100만</strong>이 평균선</li>
-      <li>한 달 내 조회수 <strong>1,000만 이상</strong> 2편 (기준선의 <strong>10배</strong>) — 극장판 홍보에 유행 밈을 섞은 편. 이후로도 100만 이상 편이 꾸준히 나옴</li>
-      <li>평균 시청 지속률 <strong>69% → 72.8%</strong> 상승, 이탈률 감소</li>
-      <li>정성 반응: 극장판 캐릭터를 쇼츠에 먼저 노출하자 <strong>"이 캐릭터 누구냐", "개봉 언제냐"</strong> 댓글 증가</li>
-    </ul>
-    <div class="modal-section-title">Roles & Responsibilities</div>
-    <ul class="modal-list">
-      <li>타겟(1020세대) 및 트렌드 분석 기반 밈/패러디 콘텐츠 기획</li>
-      <li>콘텐츠별 조회수·공유·팔로워 전환율 등 핵심 지표 분석 및 성과 관리</li>
-      <li>데이터 기반 인사이트를 다음 콘텐츠 기획에 반영 — 트렌드 변화 빠르게 적용</li>
-      <li>브랜디드 건의 <strong>소재 검수·수정 요청 회신 프로세스</strong> 관리 및 광고주·내부 제작팀 사이 일정 조율</li>
-    </ul>
-    <div class="modal-section-title">Lessons Learned</div>
-    <ul class="modal-list">
-      <li>쇼츠는 단순 영상 편집이 아닌 타겟의 공감과 반응을 유도하는 구조 설계라는 점을 체득</li>
-      <li>홍보 메시지도 직접 전달하기보다 상황과 캐릭터 안에 자연스럽게 녹일 때 반응이 높아진다는 인사이트 도출</li>
-      <li>잘 된 내용을 그대로 가져오거나 유행이라는 이유만으로는 안 됨 — <strong>트렌드 + 세계관에 맞는 캐릭터 배치 + 반전 요소</strong>가 결합될 때 확률이 오름. 원인을 더 분해해 방식을 바꾸는 데까지는 못 감 → 다시 한다면 세 조건을 기획 체크리스트로</li>
-    </ul>
+            <li><strong>기여도:</strong> 기획·구성과 제작 부서 협업·조율을 맡아 진행 — 전체 <strong>70%</strong> 기여</li>
+            <li><strong>협업 범위:</strong> 제작팀·아트팀·모델링팀 (브랜디드 건은 여기에 <strong>사업팀과 협업 브랜드</strong>가 추가)</li>
+            <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Photoshop <span class="skill skill-high">상</span></li>
+            <li><strong>타겟:</strong> 1020세대</li>
+            <li><strong>목적:</strong> 도달 → 채널 재방문 → 구독으로 잇는 유입 구조 설계</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="kd-main">
+        <div class="kd-sec">
+          <div class="modal-section-title">기본정보</div>
+          <p class="kd-summary">유튜브·인스타 두 채널에 주 4편, 8개월간 100편 이상 기획·제작·운영<br>같은 제작 프로세스 위에서 <strong>브랜디드 콘텐츠</strong>도 함께 진행</p>
+        </div>
+        <div class="kd-sec kd-media">
+          <div class="modal-section-title">Contents</div>
+            <div class="modal-showcase">
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/Y3GrSc4yins" target="_blank"><img src="https://img.youtube.com/vi/Y3GrSc4yins/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/bsrmfz9NMqI" target="_blank"><img src="https://img.youtube.com/vi/bsrmfz9NMqI/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/yywAVG4YBnM" target="_blank"><img src="https://img.youtube.com/vi/yywAVG4YBnM/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/uDnjn-SSNNo" target="_blank"><img src="https://img.youtube.com/vi/uDnjn-SSNNo/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/pXPPpYAoa6A" target="_blank"><img src="https://img.youtube.com/vi/pXPPpYAoa6A/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/aMOR3xQszik" target="_blank"><img src="https://img.youtube.com/vi/aMOR3xQszik/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+          </div>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Problem</div>
+            <ul class="modal-list">
+            <li>극장판 홍보 시기와 맞물려 채널 콘텐츠가 홍보 중심으로 편중되며 기존 팬 대상 콘텐츠의 재미와 몰입도가 저하</li>
+            <li>오리지널 쇼츠로서의 재미를 유지하면서도 홍보 메시지를 자연스럽게 녹여야 하는 이중 과제 발생</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Solution</div>
+            <ul class="modal-list">
+            <li>극장판 홍보 흐름을 유지하면서도 개별 콘텐츠 자체의 재미와 완결성을 갖춘 오리지널 쇼츠 기획</li>
+            <li>캐릭터 성격 기반 상황극 포맷을 활용해 콘텐츠 소비 → 채널 재방문 → 구독으로 이어지는 유입 구조 설계</li>
+            <li><strong>캐릭터 배역 설계:</strong> 상황극마다 배역을 팀이 공유하는 캐릭터상에 맞춰 배치 — 브레드는 해결사, 윌크는 어리숙한 역, 초코는 이성적·단호한 역 → 같은 캐릭터가 콘텐츠마다 다르게 읽히지 않도록</li>
+            <li><strong>브랜디드 확장:</strong> 롯데칠성 등 브랜디드 숏폼은 같은 제작 라인에 사업팀·광고주가 더해지는 구조. 광고주 수정 요청을 내부 확인 후 회신하고 일정 재조율</li>
+            <li><strong>판단 경계 고정:</strong> 작업량이 안 바뀌는 수정(동작·효과음 시점)은 직접 조율, 일정·비용이 바뀌는 수정(캐릭터 추가·배경 모델링)은 보고 후 전달 — 경계를 미리 정해 조율 속도 확보</li>
+            <li><strong>반응 반영:</strong> 댓글과 지표를 확인해 다음 썸네일·릴스 구성에 반영</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-perf">
+          <div class="modal-section-title">Performance</div>
+            <ul class="modal-list">
+            <li><strong>기준점:</strong> 오리지널 쇼츠는 업로드 4~5일 기준 <strong>100만</strong>이 평균선</li>
+            <li>한 달 내 조회수 <strong>1,000만 이상</strong> 2편 (기준선의 <strong>10배</strong>) — 극장판 홍보에 유행 밈을 섞은 편. 이후로도 100만 이상 편이 꾸준히 나옴</li>
+            <li>평균 시청 지속률 <strong>69% → 72.8%</strong> 상승, 이탈률 감소</li>
+            <li>정성 반응: 극장판 캐릭터를 쇼츠에 먼저 노출하자 <strong>"이 캐릭터 누구냐", "개봉 언제냐"</strong> 댓글 증가</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Roles & Responsibilities</div>
+            <ul class="modal-list">
+            <li>타겟(1020세대) 및 트렌드 분석 기반 밈/패러디 콘텐츠 기획</li>
+            <li>콘텐츠별 조회수·공유·팔로워 전환율 등 핵심 지표 분석 및 성과 관리</li>
+            <li>데이터 기반 인사이트를 다음 콘텐츠 기획에 반영 — 트렌드 변화 빠르게 적용</li>
+            <li>브랜디드 건의 <strong>소재 검수·수정 요청 회신 프로세스</strong> 관리 및 광고주·내부 제작팀 사이 일정 조율</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Lessons Learned</div>
+            <ul class="modal-list">
+            <li>쇼츠는 단순 영상 편집이 아닌 타겟의 공감과 반응을 유도하는 구조 설계라는 점을 체득</li>
+            <li>홍보 메시지도 직접 전달하기보다 상황과 캐릭터 안에 자연스럽게 녹일 때 반응이 높아진다는 인사이트 도출</li>
+            <li>잘 된 내용을 그대로 가져오거나 유행이라는 이유만으로는 안 됨 — <strong>트렌드 + 세계관에 맞는 캐릭터 배치 + 반전 요소</strong>가 결합될 때 확률이 오름. 원인을 더 분해해 방식을 바꾸는 데까지는 못 감 → 다시 한다면 세 조건을 기획 체크리스트로</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 
 <div id="modal-cheritoon" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-cheritoon')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-cheritoon')">✕</button>
-    <div class="modal-tag">체리툰</div>
-    <div class="modal-title">체리툰 오리지널 숏폼 콘텐츠 기획·제작</div>
-    <div class="modal-period">2025.09 – 2026.03</div>
-    <div class="modal-summary">이미 숏폼 중심으로 개편된 채널을 이어받아, 트렌드를 매주 갱신해 반영하며 조회수 300만+ 성과를 이어간 오리지널 쇼츠 기획·제작</div>
-    <div class="modal-section-title">Contents</div>
-    <div class="modal-showcase">
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/xW2a31Hp7NU" target="_blank"><img src="https://img.youtube.com/vi/xW2a31Hp7NU/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/oCCEymTeZ30" target="_blank"><img src="https://img.youtube.com/vi/oCCEymTeZ30/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/oUYHEAERPb4" target="_blank"><img src="https://img.youtube.com/vi/oUYHEAERPb4/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/17EfNS_zj1E" target="_blank"><img src="https://img.youtube.com/vi/17EfNS_zj1E/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/Qdriop-D6wI" target="_blank"><img src="https://img.youtube.com/vi/Qdriop-D6wI/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/shorts/eFYV5kl4L2Q" target="_blank"><img src="https://img.youtube.com/vi/eFYV5kl4L2Q/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+  <div class="modal kl-detail">
+    <button class="modal-close" onclick="closeModal('modal-cheritoon')" aria-label="닫기">✕</button>
+    <div class="kd-hero">
+      <img class="kd-hero-img" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-cheritoon.jpg" alt="" style="object-position:50% 25%;">
+      <div class="kd-hero-text">
+        <div class="kd-title">체리툰 오리지널 숏폼 기획·제작</div>
+        <div class="kd-meta"><span class="kd-badge">체리툰</span>2025.09 — 2026.03 · 숏폼 · 학원물/연애</div>
+        <div class="kd-score"><span class="card-score-dot"></span>300만+ 숏폼 6건</div>
+      </div>
     </div>
-    <div class="modal-section-title">Why</div>
+    <div class="kd-body">
+      <aside class="kd-side">
+        <div class="kd-side-box">
+          <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-      <li><strong>기여도:</strong> 기획·구성과 제작 부서 협업·조율을 맡아 진행 — 전체 <strong>70%</strong> 기여</li>
-      <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Photoshop <span class="skill skill-high">상</span></li>
-      <li><strong>타겟:</strong> 1020세대</li>
-      <li><strong>목적:</strong> 도달을 유지하며 채널 재방문·팬 유입까지 잇는 숏폼 기획·제작</li>
-    </ul>
-    <div class="modal-section-title">Problem</div>
-    <ul class="modal-list">
-      <li>시즌 3 제작 지연으로 신규 콘텐츠 공급이 어려운 상황 → 기존 재편집 콘텐츠만으로는 사용자 이탈을 막기 어려운 구조</li>
-      <li>캐릭터 IP의 인지도는 유지되고 있어 지속적인 노출과 팬 유입을 위한 대체 콘텐츠 전략이 필요</li>
-      <li>사연툰이라 <strong>원작에 캐릭터 성격·세계관이 거의 없음</strong> — 쇼츠를 만들며 세계관이 만들어지는 구조</li>
-    </ul>
-    <div class="modal-section-title">Solution</div>
-    <ul class="modal-list">
-      <li><strong>브레드이발소와 다르게 운영:</strong> 타겟이 달라 학원물·연애 소재와 챌린지형 숏폼 위주로 구성(밈도 함께 활용) — 2D 작화라 3D인 브레드이발소보다 제작 제약이 훨씬 적었음</li>
-      <li><strong>왜 시리즈화였나:</strong> 성과는 있었지만 시리즈물이 없어 잘 된 것을 반복하는 구조가 없었음 → 전임 때 잘 된 소재를 시리즈로, 소재는 주간 회의 8명 교차검증으로 선정</li>
-      <li>이어받은 숏폼 포맷에 트렌드·밈·시의성을 매주 갱신해 반영하는 오리지널 콘텐츠 기획</li>
-      <li>캐릭터 성격 기반 상황극 포맷을 유지·보완해 반복 제작이 가능한 콘텐츠 구조로 정착</li>
-      <li>콘텐츠 소비 → 채널 재방문 → 팬 유입으로 이어지는 팬덤 빌딩 구조를 고려해 설계</li>
-    </ul>
-    <div class="modal-section-title">Performance</div>
-    <ul class="modal-list">
-      <li><strong>기준점:</strong> 체리툰 숏폼 평균선은 업로드 기준 <strong>150만</strong></li>
-      <li>4개월간 조회수 <strong>300만+ 숏폼 콘텐츠 6건</strong> (기준선의 <strong>2배</strong>)</li>
-      <li>평균 시청 지속률 <strong>76.7% → 80.3%</strong> (넘겨받기 전 4개월 vs 넘겨받은 후 4개월)</li>
-    </ul>
-    <div class="modal-section-title">Roles & Responsibilities</div>
-    <ul class="modal-list">
-      <li>트렌드 및 타겟 분석 기반 콘텐츠 기획 방향 수립</li>
-      <li>조회수·시청 지속률 등 핵심 지표 분석 및 개선 방향 도출</li>
-      <li>데이터 기반으로 콘텐츠 전략을 반복 개선하며 제작 구조 구축</li>
-    </ul>
-    <div class="modal-section-title">Failure → Retry</div>
-    <ul class="modal-list">
-      <li>원작에 세계관이 없다고 보고 초반엔 <strong>밈을 그대로 따라 제작</strong> → 기존 쇼츠들이 이미 캐릭터 성격·러브라인 등 세계관을 쌓아왔음을 간과 → 이후 기존 쇼츠의 관계·성격을 이어받아 밈 배치</li>
-    </ul>
-    <div class="modal-section-title">Lessons Learned</div>
-    <ul class="modal-list">
-      <li>숏폼 콘텐츠는 단순 편집이 아니라 타겟과 상황을 기반으로 설계되어야 한다는 점을 학습</li>
-      <li>포맷 구조에 따라 조회수와 유입 성과가 달라지며 콘텐츠 기획 단계에서 구조 설계가 핵심이라는 인사이트 도출</li>
-      <li>원작에 세계관이 없는 IP는 쇼츠가 세계관을 만든다 — 그래서 이전 쇼츠들을 먼저 읽어야 한다는 것을 배움</li>
-    </ul>
+            <li><strong>기여도:</strong> 기획·구성과 제작 부서 협업·조율을 맡아 진행 — 전체 <strong>70%</strong> 기여</li>
+            <li><strong>사용 툴:</strong> Premiere Pro <span class="skill skill-high">상</span> · Photoshop <span class="skill skill-high">상</span></li>
+            <li><strong>타겟:</strong> 1020세대</li>
+            <li><strong>목적:</strong> 도달을 유지하며 채널 재방문·팬 유입까지 잇는 숏폼 기획·제작</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="kd-main">
+        <div class="kd-sec">
+          <div class="modal-section-title">기본정보</div>
+          <p class="kd-summary">이미 숏폼 중심으로 개편된 채널을 이어받아, 트렌드를 매주 갱신해 반영하며 조회수 300만+ 성과를 이어간 오리지널 쇼츠 기획·제작</p>
+        </div>
+        <div class="kd-sec kd-media">
+          <div class="modal-section-title">Contents</div>
+            <div class="modal-showcase">
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/xW2a31Hp7NU" target="_blank"><img src="https://img.youtube.com/vi/xW2a31Hp7NU/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/oCCEymTeZ30" target="_blank"><img src="https://img.youtube.com/vi/oCCEymTeZ30/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/oUYHEAERPb4" target="_blank"><img src="https://img.youtube.com/vi/oUYHEAERPb4/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/17EfNS_zj1E" target="_blank"><img src="https://img.youtube.com/vi/17EfNS_zj1E/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/Qdriop-D6wI" target="_blank"><img src="https://img.youtube.com/vi/Qdriop-D6wI/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/shorts/eFYV5kl4L2Q" target="_blank"><img src="https://img.youtube.com/vi/eFYV5kl4L2Q/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+          </div>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Problem</div>
+            <ul class="modal-list">
+            <li>시즌 3 제작 지연으로 신규 콘텐츠 공급이 어려운 상황 → 기존 재편집 콘텐츠만으로는 사용자 이탈을 막기 어려운 구조</li>
+            <li>캐릭터 IP의 인지도는 유지되고 있어 지속적인 노출과 팬 유입을 위한 대체 콘텐츠 전략이 필요</li>
+            <li>사연툰이라 <strong>원작에 캐릭터 성격·세계관이 거의 없음</strong> — 쇼츠를 만들며 세계관이 만들어지는 구조</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Solution</div>
+            <ul class="modal-list">
+            <li><strong>브레드이발소와 다르게 운영:</strong> 타겟이 달라 학원물·연애 소재와 챌린지형 숏폼 위주로 구성(밈도 함께 활용) — 2D 작화라 3D인 브레드이발소보다 제작 제약이 훨씬 적었음</li>
+            <li><strong>왜 시리즈화였나:</strong> 성과는 있었지만 시리즈물이 없어 잘 된 것을 반복하는 구조가 없었음 → 전임 때 잘 된 소재를 시리즈로, 소재는 주간 회의 8명 교차검증으로 선정</li>
+            <li>이어받은 숏폼 포맷에 트렌드·밈·시의성을 매주 갱신해 반영하는 오리지널 콘텐츠 기획</li>
+            <li>캐릭터 성격 기반 상황극 포맷을 유지·보완해 반복 제작이 가능한 콘텐츠 구조로 정착</li>
+            <li>콘텐츠 소비 → 채널 재방문 → 팬 유입으로 이어지는 팬덤 빌딩 구조를 고려해 설계</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-perf">
+          <div class="modal-section-title">Performance</div>
+            <ul class="modal-list">
+            <li><strong>기준점:</strong> 체리툰 숏폼 평균선은 업로드 기준 <strong>150만</strong></li>
+            <li>4개월간 조회수 <strong>300만+ 숏폼 콘텐츠 6건</strong> (기준선의 <strong>2배</strong>)</li>
+            <li>평균 시청 지속률 <strong>76.7% → 80.3%</strong> (넘겨받기 전 4개월 vs 넘겨받은 후 4개월)</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Roles & Responsibilities</div>
+            <ul class="modal-list">
+            <li>트렌드 및 타겟 분석 기반 콘텐츠 기획 방향 수립</li>
+            <li>조회수·시청 지속률 등 핵심 지표 분석 및 개선 방향 도출</li>
+            <li>데이터 기반으로 콘텐츠 전략을 반복 개선하며 제작 구조 구축</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Failure → Retry</div>
+            <ul class="modal-list">
+            <li>원작에 세계관이 없다고 보고 초반엔 <strong>밈을 그대로 따라 제작</strong> → 기존 쇼츠들이 이미 캐릭터 성격·러브라인 등 세계관을 쌓아왔음을 간과 → 이후 기존 쇼츠의 관계·성격을 이어받아 밈 배치</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Lessons Learned</div>
+            <ul class="modal-list">
+            <li>숏폼 콘텐츠는 단순 편집이 아니라 타겟과 상황을 기반으로 설계되어야 한다는 점을 학습</li>
+            <li>포맷 구조에 따라 조회수와 유입 성과가 달라지며 콘텐츠 기획 단계에서 구조 설계가 핵심이라는 인사이트 도출</li>
+            <li>원작에 세계관이 없는 IP는 쇼츠가 세계관을 만든다 — 그래서 이전 쇼츠들을 먼저 읽어야 한다는 것을 배움</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div id="modal-crehoho" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-crehoho')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-crehoho')">✕</button>
-    <div class="modal-tag">Crehoho</div>
-    <div class="modal-title">Crehoho — 감정을 이미지 서사로 설계하는 개인 창작 채널</div>
-    <div class="modal-period">2023.05 – 현재</div>
-    <div class="modal-summary">2023년 <strong>가상 전시를 상정한 아트워크 기획</strong>에서 출발한 개인 창작 채널<br>상업 IP 제약 없이 새 생성 툴과 몰입 구조를 자유롭게 실험하는 공간</div>
-    <div class="modal-section-title">Why</div>
-    <ul class="modal-list">
-      <li><strong>기여도:</strong> 기획·이미지 합성·AI 활용·영상화 전 과정 <strong>100%</strong> 직접 수행</li>
-      <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Firefly · Gemini · Kling</li>
-      <li><strong>목적:</strong> 상업 IP 제약 없이 새 툴·기법과 "보는 사람을 몰입시키는 구조"를 자유롭게 실험</li>
-    </ul>
-    <div class="modal-section-title">Origin</div>
-    <ul class="modal-list">
-      <li>대학 시절 <strong>Photoshop을 더 잘 다루기 위한 습작</strong>을 올리는 연습 공간으로 시작. 만들다 보니 작업에 색깔이 생겼고, 인디 아티스트들에게서 연락을 받아 <strong>앨범 커버 작업</strong>으로 이어짐</li>
-    </ul>
-    <div class="modal-section-title">Solution</div>
-    <ul class="modal-list">
-      <li><strong>작업 방식:</strong> 감정과 상황을 "보이는 장면"으로 설계하고, 같은 장소·다른 시간대/감정, 한 장면에서 다음 장면으로 이어지는 연속 서사를 이미지로 기획·제작</li>
-      <li><strong>도구의 확장:</strong> 초기 콜라주·디지털 합성 → Gemini 오브젝트 생성·합성, Photoshop Firefly 생성 채우기로 의상·배경 확장 → Kling으로 영상화</li>
-    </ul>
-    <div class="modal-section-title">Lessons Learned</div>
-    <ul class="modal-list">
-      <li>몰입은 "다음이 궁금한 구조"에서 옴 — 이미지 한 장에도 시간 흐름과 감정 변화를 설계 가능</li>
-      <li>AI는 머릿속 장면을 구체화하는 속도를 높이지만, 어떤 장면을 만들지는 결국 언어화 능력에서 출발함</li>
-    </ul>
-    <div class="modal-section-title">Contents</div>
-    <div style="display:flex; gap:8px; margin-top:16px;">
-      <a class="modal-showcase-item" style="flex:1; aspect-ratio:4/5;" href="crehoho-img2.png" target="_blank"><img src="crehoho-img2.png" alt="Crehoho 아트워크 — 눈물참기 (포토샵 합성)" style="width:100%; height:100%; object-fit:cover; display:block;"></a>
-      <a class="modal-showcase-item" style="flex:1; aspect-ratio:4/5;" href="crehoho-video2.mp4" target="_blank" rel="noopener"><video src="crehoho-video2.mp4" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video></a>
-    </div>
-    <div style="display:flex; gap:8px; margin-top:8px; align-items:stretch;">
-      <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
-        <a class="modal-showcase-item" style="aspect-ratio:9/16;" href="crehoho-video3.mp4" target="_blank" rel="noopener"><video src="crehoho-video3.mp4" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video></a>
-      </div>
-      <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
-        <a class="modal-showcase-item" style="aspect-ratio:9/16;" href="crehoho-video1.mp4" target="_blank" rel="noopener"><video src="crehoho-video1.mp4" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video></a>
+  <div class="modal kl-detail">
+    <button class="modal-close" onclick="closeModal('modal-crehoho')" aria-label="닫기">✕</button>
+    <div class="kd-hero">
+      <img class="kd-hero-img" src="https://hojinyu315.github.io/naverwebtoon/images/crehoho-collage.jpg" alt="" style="object-position:50% 60%;">
+      <div class="kd-hero-text">
+        <div class="kd-title">Crehoho — 이미지 서사 창작</div>
+        <div class="kd-meta"><span class="kd-badge">Crehoho</span>2023.05 — 현재 · 개인 채널 · 이미지 서사</div>
+        <div class="kd-score"><span class="card-score-dot"></span>기여도 100%</div>
       </div>
     </div>
-    <div style="margin-top: 16px;">
-      <a class="ext-link" href="https://www.instagram.com/crehoho._.u/" target="_blank" style="font-size: 18px; font-weight: 600; color: var(--dark); letter-spacing: 0.3px;">→ 현재 진행 중인 아트워크 보기 @crehoho._.u</a>
+    <div class="kd-body">
+      <aside class="kd-side">
+        <div class="kd-side-box">
+          <div class="kd-side-title">작업 정보</div>
+    <ul class="modal-list">
+            <li><strong>기여도:</strong> 기획·이미지 합성·AI 활용·영상화 전 과정 <strong>100%</strong> 직접 수행</li>
+            <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Firefly · Gemini · Kling</li>
+            <li><strong>목적:</strong> 상업 IP 제약 없이 새 툴·기법과 "보는 사람을 몰입시키는 구조"를 자유롭게 실험</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="kd-main">
+        <div class="kd-sec">
+          <div class="modal-section-title">기본정보</div>
+          <p class="kd-summary">2023년 <strong>가상 전시를 상정한 아트워크 기획</strong>에서 출발한 개인 창작 채널<br>상업 IP 제약 없이 새 생성 툴과 몰입 구조를 자유롭게 실험하는 공간</p>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Origin</div>
+            <ul class="modal-list">
+            <li>대학 시절 <strong>Photoshop을 더 잘 다루기 위한 습작</strong>을 올리는 연습 공간으로 시작. 만들다 보니 작업에 색깔이 생겼고, 인디 아티스트들에게서 연락을 받아 <strong>앨범 커버 작업</strong>으로 이어짐</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Solution</div>
+            <ul class="modal-list">
+            <li><strong>작업 방식:</strong> 감정과 상황을 "보이는 장면"으로 설계하고, 같은 장소·다른 시간대/감정, 한 장면에서 다음 장면으로 이어지는 연속 서사를 이미지로 기획·제작</li>
+            <li><strong>도구의 확장:</strong> 초기 콜라주·디지털 합성 → Gemini 오브젝트 생성·합성, Photoshop Firefly 생성 채우기로 의상·배경 확장 → Kling으로 영상화</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Lessons Learned</div>
+            <ul class="modal-list">
+            <li>몰입은 "다음이 궁금한 구조"에서 옴 — 이미지 한 장에도 시간 흐름과 감정 변화를 설계 가능</li>
+            <li>AI는 머릿속 장면을 구체화하는 속도를 높이지만, 어떤 장면을 만들지는 결국 언어화 능력에서 출발함</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-media">
+          <div class="modal-section-title">Contents</div>
+            <div style="display:flex; gap:8px; margin-top:16px;">
+            <a class="modal-showcase-item" style="flex:1; aspect-ratio:4/5;" href="crehoho-img2.png" target="_blank"><img src="crehoho-img2.png" alt="Crehoho 아트워크 — 눈물참기 (포토샵 합성)" style="width:100%; height:100%; object-fit:cover; display:block;"></a>
+            <a class="modal-showcase-item" style="flex:1; aspect-ratio:4/5;" href="crehoho-video2.mp4" target="_blank" rel="noopener"><video src="crehoho-video2.mp4" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video></a>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:8px; align-items:stretch;">
+            <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+              <a class="modal-showcase-item" style="aspect-ratio:9/16;" href="crehoho-video3.mp4" target="_blank" rel="noopener"><video src="crehoho-video3.mp4" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video></a>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+              <a class="modal-showcase-item" style="aspect-ratio:9/16;" href="crehoho-video1.mp4" target="_blank" rel="noopener"><video src="crehoho-video1.mp4" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video></a>
+            </div>
+          </div>
+          <div style="margin-top: 16px;">
+            <a class="ext-link" href="https://www.instagram.com/crehoho._.u/" target="_blank" style="font-size: 18px; font-weight: 600; color: var(--dark); letter-spacing: 0.3px;">→ 현재 진행 중인 아트워크 보기 @crehoho._.u</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <div id="modal-cjenm" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-cjenm')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-cjenm')">✕</button>
-    <div class="modal-tag">CJ ENM</div>
-    <div class="modal-title">투니버스 IP 기반 콘텐츠 기획·운영 (썸네일·SNS)</div>
-    <div class="modal-period">2021.05 – 2021.11</div>
-    <div class="modal-summary">CJ ENM 투니버스 IP를 활용해 클릭을 만드는 썸네일과 콘텐츠처럼 소비되는 SNS 콘텐츠를 함께 설계<br>감정·궁금증 중심 썸네일과 트렌드 기반 캐릭터 콘텐츠를 결합해 유입부터 반응까지 이어지는 콘텐츠 구조를 구축</div>
-    <div class="modal-section-title">Contents</div>
-    <div class="modal-showcase">
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=gke95KRUs7M" target="_blank"><img src="https://img.youtube.com/vi/gke95KRUs7M/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=ARyvIJI8z1s" target="_blank"><img src="https://img.youtube.com/vi/ARyvIJI8z1s/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=Zfj72GyKyOg" target="_blank"><img src="https://img.youtube.com/vi/Zfj72GyKyOg/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=bupqY1qrSHE" target="_blank"><img src="https://img.youtube.com/vi/bupqY1qrSHE/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.instagram.com/p/CP-Y3CeMR2q/" target="_blank"><img src="https://hojinyu315.github.io/vyoova/images/뿌까_포스팅_1_최종.png" alt=""><div class="play-btn"><span>▶</span></div></a>
-      <a class="modal-showcase-item" href="https://www.instagram.com/p/CUwx3YRBOdu/" target="_blank"><img src="https://hojinyu315.github.io/vyoova/images/포스팅_5.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+  <div class="modal kl-detail">
+    <button class="modal-close" onclick="closeModal('modal-cjenm')" aria-label="닫기">✕</button>
+    <div class="kd-hero">
+      <img class="kd-hero-img" src="https://hojinyu315.github.io/vyoova/images/thumb-cjenm.jpg" alt="" style="object-position:50% 50%;">
+      <div class="kd-hero-text">
+        <div class="kd-title">투니버스 IP 콘텐츠 기획·운영</div>
+        <div class="kd-meta"><span class="kd-badge">CJ ENM</span>2021.05 — 2021.11 · 투니버스 · 썸네일/SNS</div>
+        <div class="kd-score"><span class="card-score-dot"></span>기여도 100%</div>
+      </div>
     </div>
-    <div class="modal-section-title">Why</div>
+    <div class="kd-body">
+      <aside class="kd-side">
+        <div class="kd-side-box">
+          <div class="kd-side-title">작업 정보</div>
     <ul class="modal-list">
-      <li><strong>기여도:</strong> 썸네일 및 SNS 콘텐츠 기획·제작 전 과정 <strong>100%</strong> 직접 수행</li>
-      <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Premiere Pro <span class="skill skill-high">상</span> · After Effects <span class="skill skill-mid">중</span></li>
-      <li><strong>타겟:</strong> 1020세대</li>
-      <li><strong>목적:</strong> 투니버스 유튜브 썸네일과 SNS 게시물 제작</li>
-    </ul>
-    <div class="modal-section-title">Problem</div>
-    <ul class="modal-list">
-      <li>썸네일 작업 자체가 처음이라 초반엔 무엇이 클릭을 만드는지 감을 잡지 못함</li>
-      <li>홍보성 SNS 게시물은 광고 느낌이 강해 자연스럽게 소비되지 않는 문제</li>
-    </ul>
-    <div class="modal-section-title">Solution</div>
-    <ul class="modal-list">
-      <li>일하면서 구분이 생김 — <strong>썸네일은 감정·궁금증으로 클릭, SNS 게시물은 트렌드 상황극으로 소비</strong></li>
-      <li>당시 지표 분석 역할 없음 — 이 구분은 이후 브레드이발소에서 A/B·CTR로 검증</li>
-    </ul>
-    <div class="modal-section-title">Roles & Responsibilities</div>
-    <ul class="modal-list">
-      <li>투니버스 유튜브 썸네일 기획·디자인</li>
-      <li>캐릭터 IP 기반 SNS 게시물 기획·제작 (트렌드·상황극 반영)</li>
-    </ul>
-    <div class="modal-section-title">Lessons Learned</div>
-    <ul class="modal-list">
-      <li>개인 취향보다 대중이 공감할 수 있는 상황·감정을 시각화하는 일이 중요함을 체감</li>
-      <li>콘텐츠는 적절한 타이밍과 포인트 설계, 반복 노출을 통해 성과로 이어진다는 인사이트 도출</li>
-    </ul>
+            <li><strong>기여도:</strong> 썸네일 및 SNS 콘텐츠 기획·제작 전 과정 <strong>100%</strong> 직접 수행</li>
+            <li><strong>사용 툴:</strong> Photoshop <span class="skill skill-high">상</span> · Premiere Pro <span class="skill skill-high">상</span> · After Effects <span class="skill skill-mid">중</span></li>
+            <li><strong>타겟:</strong> 1020세대</li>
+            <li><strong>목적:</strong> 투니버스 유튜브 썸네일과 SNS 게시물 제작</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="kd-main">
+        <div class="kd-sec">
+          <div class="modal-section-title">기본정보</div>
+          <p class="kd-summary">CJ ENM 투니버스 IP를 활용해 클릭을 만드는 썸네일과 콘텐츠처럼 소비되는 SNS 콘텐츠를 함께 설계<br>감정·궁금증 중심 썸네일과 트렌드 기반 캐릭터 콘텐츠를 결합해 유입부터 반응까지 이어지는 콘텐츠 구조를 구축</p>
+        </div>
+        <div class="kd-sec kd-media">
+          <div class="modal-section-title">Contents</div>
+            <div class="modal-showcase">
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=gke95KRUs7M" target="_blank"><img src="https://img.youtube.com/vi/gke95KRUs7M/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=ARyvIJI8z1s" target="_blank"><img src="https://img.youtube.com/vi/ARyvIJI8z1s/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=Zfj72GyKyOg" target="_blank"><img src="https://img.youtube.com/vi/Zfj72GyKyOg/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.youtube.com/watch?v=bupqY1qrSHE" target="_blank"><img src="https://img.youtube.com/vi/bupqY1qrSHE/mqdefault.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.instagram.com/p/CP-Y3CeMR2q/" target="_blank"><img src="https://hojinyu315.github.io/vyoova/images/뿌까_포스팅_1_최종.png" alt=""><div class="play-btn"><span>▶</span></div></a>
+            <a class="modal-showcase-item" href="https://www.instagram.com/p/CUwx3YRBOdu/" target="_blank"><img src="https://hojinyu315.github.io/vyoova/images/포스팅_5.jpg" alt=""><div class="play-btn"><span>▶</span></div></a>
+          </div>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Problem</div>
+            <ul class="modal-list">
+            <li>썸네일 작업 자체가 처음이라 초반엔 무엇이 클릭을 만드는지 감을 잡지 못함</li>
+            <li>홍보성 SNS 게시물은 광고 느낌이 강해 자연스럽게 소비되지 않는 문제</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Solution</div>
+            <ul class="modal-list">
+            <li>일하면서 구분이 생김 — <strong>썸네일은 감정·궁금증으로 클릭, SNS 게시물은 트렌드 상황극으로 소비</strong></li>
+            <li>당시 지표 분석 역할 없음 — 이 구분은 이후 브레드이발소에서 A/B·CTR로 검증</li>
+          </ul>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Roles & Responsibilities</div>
+            <ul class="modal-list">
+            <li>투니버스 유튜브 썸네일 기획·디자인</li>
+            <li>캐릭터 IP 기반 SNS 게시물 기획·제작 (트렌드·상황극 반영)</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Lessons Learned</div>
+            <ul class="modal-list">
+            <li>개인 취향보다 대중이 공감할 수 있는 상황·감정을 시각화하는 일이 중요함을 체감</li>
+            <li>콘텐츠는 적절한 타이밍과 포인트 설계, 반복 노출을 통해 성과로 이어진다는 인사이트 도출</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div id="modal-diyclawd" class="modal-overlay" onclick="closeModalOnOverlay(event,'modal-diyclawd')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('modal-diyclawd')">✕</button>
-    <div class="modal-tag">DIY-Claude · 개인 프로젝트</div>
-    <div class="modal-title">DIY-Claude<br>AI 작업 상태를 보여주는 데스크탑 캐릭터 앱</div>
-    <div class="modal-period">2026</div>
-    <div class="modal-summary">Claude Code의 작업 상태를 화면 위 캐릭터로 보여주는 macOS 데스크탑 도우미<br>공식 hook 기능과 macOS 네이티브 API(AppKit)만으로 직접 설계·제작한 개인 프로젝트</div>
-    <div class="modal-section-title">Why</div>
-    <ul class="modal-list">
-      <li><strong>기여도:</strong> 기획·캐릭터 제작·개발 전 과정 <strong>100%</strong> 직접 수행</li>
-      <li><strong>사용 툴:</strong> Claude · Gemini</li>
-      <li><strong>목적:</strong> 일상에서도 AI 도구를 직접 파고들며, AI의 작업 흐름을 한눈에 보이게 만드는 실험 공간</li>
-    </ul>
-    <div class="modal-section-title">Solution</div>
-    <ul class="modal-list">
-      <li><strong>구조 설계:</strong> hook 이벤트 → 상태 매핑(state.txt) → AppKit 캐릭터 애니메이션으로 이어지는 파이프라인을 직접 구현. idle/thinking/working/done/notify/sleeping 6가지 상태를 자체 제작 일러스트로 표시</li>
-      <li><strong>캐릭터 제작:</strong> Gemini로 직접 기획·생성(2단계 프롬프트 → 6포즈 시트)하고, Photoroom으로 투명 PNG 처리. Retina 대응 2배 해상도·premultiplied alpha로 작은 크기에서도 선명하게 제작</li>
-      <li><strong>운영:</strong> launchd(LaunchAgent)로 로그인 시 자동 실행·자동 복구, 투명 배경·항상 위 표시, 3분 무활동 시 자동 수면</li>
-    </ul>
-    <div class="modal-section-title">Lessons Learned</div>
-    <ul class="modal-list">
-      <li>포즈를 추상적인 "상태명"이 아니라 구체적인 동작으로 고정해야 결과가 안정적으로 나옴 — AI 이미지 작업에서 얻은 "빈칸을 줄일수록 재현 가능해진다"는 원칙이 그대로 적용</li>
-      <li>권한 결정을 앱 팝업과 동기화하려 했으나 한계를 확인하고, "결정은 Claude Code 화면에서, 앱은 알려주기만" 하는 단순한 구조로 되돌림</li>
-      <li>토큰 사용량 표시는 비교 기준값을 구할 방법이 없어, 틀린 추정치를 보여주기보다 기능 자체를 뺌 — 정확하지 않은 정보는 보여주지 않는 게 맞다고 판단</li>
-    </ul>
-    <div class="modal-section-title">Contents</div>
-    <div class="modal-showcase">
-      <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-idle.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-idle.png" alt="idle"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">idle · 대기</span></a>
-      <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-thinking.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-thinking.png" alt="thinking"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">thinking · 생각 중</span></a>
-      <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-working.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-working.png" alt="working"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">working · 작업 중</span></a>
-      <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-done.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-done.png" alt="done"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">done · 완료</span></a>
-      <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-notify.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-notify.png" alt="notify"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">notify · 알림</span></a>
-      <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-sleeping.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-sleeping.png" alt="sleeping"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">sleeping · 수면</span></a>
+  <div class="modal kl-detail">
+    <button class="modal-close" onclick="closeModal('modal-diyclawd')" aria-label="닫기">✕</button>
+    <div class="kd-hero">
+      <img class="kd-hero-img" src="https://hojinyu315.github.io/naverwebtoon/images/thumb-diyclawd.png" alt="" style="object-position:50% 50%;">
+      <div class="kd-hero-text">
+        <div class="kd-title">DIY-Claude — 데스크탑 캐릭터 앱</div>
+        <div class="kd-sub">AI 작업 상태를 보여주는 데스크탑 캐릭터 앱</div>
+        <div class="kd-meta"><span class="kd-badge">DIY-Claude · 개인 프로젝트</span>2026 · 개인 프로젝트 · 데스크탑 앱</div>
+        <div class="kd-score"><span class="card-score-dot"></span>기여도 100%</div>
+      </div>
     </div>
-    <div style="margin-top: 16px;">
-      <a class="ext-link" href="https://github.com/hojinyu315/diy-clawd" target="_blank" style="font-size: 18px; font-weight: 600; color: var(--dark); letter-spacing: 0.3px;">→ 직접 만든 소스 코드 보기 github.com/hojinyu315/diy-clawd</a>
+    <div class="kd-body">
+      <aside class="kd-side">
+        <div class="kd-side-box">
+          <div class="kd-side-title">작업 정보</div>
+    <ul class="modal-list">
+            <li><strong>기여도:</strong> 기획·캐릭터 제작·개발 전 과정 <strong>100%</strong> 직접 수행</li>
+            <li><strong>사용 툴:</strong> Claude · Gemini</li>
+            <li><strong>목적:</strong> 일상에서도 AI 도구를 직접 파고들며, AI의 작업 흐름을 한눈에 보이게 만드는 실험 공간</li>
+          </ul>
+        </div>
+      </aside>
+      <div class="kd-main">
+        <div class="kd-sec">
+          <div class="modal-section-title">기본정보</div>
+          <p class="kd-summary">Claude Code의 작업 상태를 화면 위 캐릭터로 보여주는 macOS 데스크탑 도우미<br>공식 hook 기능과 macOS 네이티브 API(AppKit)만으로 직접 설계·제작한 개인 프로젝트</p>
+        </div>
+        <div class="kd-sec">
+          <div class="modal-section-title">Solution</div>
+            <ul class="modal-list">
+            <li><strong>구조 설계:</strong> hook 이벤트 → 상태 매핑(state.txt) → AppKit 캐릭터 애니메이션으로 이어지는 파이프라인을 직접 구현. idle/thinking/working/done/notify/sleeping 6가지 상태를 자체 제작 일러스트로 표시</li>
+            <li><strong>캐릭터 제작:</strong> Gemini로 직접 기획·생성(2단계 프롬프트 → 6포즈 시트)하고, Photoroom으로 투명 PNG 처리. Retina 대응 2배 해상도·premultiplied alpha로 작은 크기에서도 선명하게 제작</li>
+            <li><strong>운영:</strong> launchd(LaunchAgent)로 로그인 시 자동 실행·자동 복구, 투명 배경·항상 위 표시, 3분 무활동 시 자동 수면</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-cards">
+          <div class="modal-section-title">Lessons Learned</div>
+            <ul class="modal-list">
+            <li>포즈를 추상적인 "상태명"이 아니라 구체적인 동작으로 고정해야 결과가 안정적으로 나옴 — AI 이미지 작업에서 얻은 "빈칸을 줄일수록 재현 가능해진다"는 원칙이 그대로 적용</li>
+            <li>권한 결정을 앱 팝업과 동기화하려 했으나 한계를 확인하고, "결정은 Claude Code 화면에서, 앱은 알려주기만" 하는 단순한 구조로 되돌림</li>
+            <li>토큰 사용량 표시는 비교 기준값을 구할 방법이 없어, 틀린 추정치를 보여주기보다 기능 자체를 뺌 — 정확하지 않은 정보는 보여주지 않는 게 맞다고 판단</li>
+          </ul>
+        </div>
+        <div class="kd-sec kd-media">
+          <div class="modal-section-title">Contents</div>
+            <div class="modal-showcase">
+            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-idle.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-idle.png" alt="idle"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">idle · 대기</span></a>
+            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-thinking.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-thinking.png" alt="thinking"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">thinking · 생각 중</span></a>
+            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-working.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-working.png" alt="working"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">working · 작업 중</span></a>
+            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-done.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-done.png" alt="done"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">done · 완료</span></a>
+            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-notify.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-notify.png" alt="notify"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">notify · 알림</span></a>
+            <a class="modal-showcase-item" style="aspect-ratio:1/1;" href="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-sleeping.png" target="_blank"><img src="https://hojinyu315.github.io/naverwebtoon/images/diyclawd-sleeping.png" alt="sleeping"><span style="position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.6); color:#fff; font-size:10px; font-weight:600; padding:3px 8px; border-radius:4px; letter-spacing:0.3px;">sleeping · 수면</span></a>
+          </div>
+          <div style="margin-top: 16px;">
+            <a class="ext-link" href="https://github.com/hojinyu315/diy-clawd" target="_blank" style="font-size: 18px; font-weight: 600; color: var(--dark); letter-spacing: 0.3px;">→ 직접 만든 소스 코드 보기 github.com/hojinyu315/diy-clawd</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
